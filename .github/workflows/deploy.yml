@@ -15,7 +15,7 @@ jobs:
       - name: Install and Build 🔧
         run: |
           cd website
-          npm install
+          yarn
           npm run-script build
 
       - name: Deploy 🚀
