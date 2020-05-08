@@ -32,10 +32,10 @@ const siteConfig = {
   ],
   themeConfig: {
     image: 'img/logo-og.png',
-    // algolia: {
-    //   apiKey: '',
-    //   indexName: '',
-    // },
+    algolia: {
+      apiKey: 'ddf5199f80099ebf2895567663218470',
+      indexName: 'shuvijs',
+    },
     navbar: {
       title: 'Shuvijs',
       logo: {
