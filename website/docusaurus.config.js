@@ -20,9 +20,9 @@ const siteConfig = {
         docs: {
           path: '../docs',
           sidebarPath: require.resolve('./sidebars.json'),
-          editUrl: 'https://github.com/shuvijs/shuvijs.org',
-          showLastUpdateAuthor: true,
-          showLastUpdateTime: true,
+          editUrl: 'https://github.com/shuvijs/shuvijs.org/tree/master/website/',
+          // showLastUpdateAuthor: true,
+          // showLastUpdateTime: true,
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
@@ -36,6 +36,7 @@ const siteConfig = {
       apiKey: 'ddf5199f80099ebf2895567663218470',
       indexName: 'shuvijs',
     },
+    sidebarCollapsible: false,
     navbar: {
       title: 'Shuvijs',
       logo: {
@@ -43,12 +44,9 @@ const siteConfig = {
         src: 'img/logo.svg',
       },
       links: [
-        { to: 'docs/getting-started', label: 'Docs', position: 'right' },
-        {
-          href: 'https://github.com/shuvijs/shuvi/issues',
-          label: 'Help',
-          position: 'right',
-        },
+        { to: 'docs/getting-started', label: '文档', position: 'right' },
+        { to: 'docs/config', label: '配置', position: 'right' },
+        {to: 'docs/api', label: 'API', position: 'right'},
         {
           href: 'https://github.com/shuvijs/shuvi',
           label: 'GitHub',

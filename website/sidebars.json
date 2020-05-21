@@ -1,10 +1,10 @@
 {
   "docs": {
-    "Welcome": [
-      "documentation-intro"
-    ],
-    "Getting Started": [
+    "介绍": [
       "getting-started"
+    ],
+    "获取数据": [
+      "getInitialProps"
     ]
   }
 }
