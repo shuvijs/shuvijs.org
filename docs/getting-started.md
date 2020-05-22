@@ -19,7 +19,7 @@ npm init -y
 安装 shuvi
 
 ```sh
-install shuvi@beta
+npm install shuvi@beta
 ```
 
 创建 `src/pages` 目录, 并生成一个 hello world 页面
@@ -43,5 +43,5 @@ EOF
 
 启动项目
 ```sh
-npm start
+npm run dev
 ```

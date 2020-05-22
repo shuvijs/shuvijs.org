@@ -3,6 +3,9 @@
     "介绍": [
       "getting-started"
     ],
+    "基础": [
+      "directory-structure"
+    ],
     "获取数据": [
       "getInitialProps"
     ]
