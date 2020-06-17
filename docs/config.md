@@ -89,7 +89,7 @@ module.exports = {
 设置运行时变量。示例：
 ```js
 module.exports = {
-  env: {
+  runtimeConfig: {
     staticFolder: '/static',
   }
 }

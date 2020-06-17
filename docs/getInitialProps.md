@@ -38,4 +38,5 @@ export default Page;
 - `redirect` - 重定向函数
   - `redirect('/target')` 
   - `redirect(301, '/target')`
-- `req` - HTTP request object (server only)
+- `appContext` - 应用上下文对象，伴随者整个应用的生命周期
+  - `req` - HTTP request object (server only)
