@@ -17,7 +17,7 @@ module.exports = {
 }
 ```
 
-在代码种可通过 `process.env.customKey` 访问：
+在代码中可通过 `process.env.customKey` 访问：
 
 ```jsx
 function Page() {
