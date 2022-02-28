@@ -1,33 +1,34 @@
-### quick Example Tom
-### 命令
-Dev， build， serve
-
-
 ---
 id: getting-started
-title: 快速上手
+title: quick start
 ---
 
-## 介绍
+## Introduction
 
-shuvi 是前端应用开发的解决方案，整合了现代工具链，专注于提升开发体验和效率。
+shuvi is a front-end application development solution that integrates modern tool chains and focuses on improving development experience and efficiency.
 
-## 使用
+## System Requirements
 
-创建项目
+- [node 14.x](https://github.com/nodejs/Release)
+
+- npm with node version
+
+## Start
+
+Create a new directory and init `package.json`
 
 ```sh
-mkdir my-app & cd my-app
+mkdir shuvi-app & cd shuvi-app
 npm init -y
 ```
 
-安装 shuvi
+Install shuvi
 
 ```sh
-npm install shuvi@beta
+npm install shuvi@last
 ```
 
-创建 `src/pages` 目录, 并生成一个 hello world 页面
+Create `src/pages` directory, then generate a page with `hello, world`:
 ```sh
 mkdir -p src/pages
 cat <<EOF >> /src/pages/index.js
@@ -35,7 +36,7 @@ export default () => <div>hello, world</div>
 EOF
 ```
 
-在 `package.json` 种添加脚本
+Open `package.json` and add the following `scripts`:
 ```json
 {
   "scripts": {
@@ -46,7 +47,26 @@ EOF
 }
 ```
 
-启动项目
+- `shuvi dev` - which starts shuvi in development mode
+- `shuvi build` - which builds the application for production usage
+- `shuvi serve` - which starts a shuvi production server
+  
+Shuvi is built around the concept of React Component exported from a .js, .jsx, .ts, or .tsx file in the pages directory.
+
+## Development
+
+run development command and visit [localhost:3000](http://localhost:3000)
 ```sh
 npm run dev
 ```
+## production
+
+run production command to bundle application
+```sh
+npm run build
+```
+start a server for visit
+```sh
+npm run serve
+```
+
