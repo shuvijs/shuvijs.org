@@ -1,3 +1,8 @@
+### quick Example Tom
+### 命令
+Dev， build， serve
+
+
 ---
 id: getting-started
 title: 快速上手

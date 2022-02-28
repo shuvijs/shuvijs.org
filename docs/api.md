@@ -3,6 +3,23 @@ id: api
 title: API
 ---
 
+
+ - ctx Tom
+   
+ - matchRoutes Tom
+ - getRuntimeConfig Tom
+ - getPageData Tom
+ - App Tom
+ - Head Tom
+ - dynamic Tom
+ - useParams, Tom
+ - useRouter, Tom
+ - useCurrentRoute, Tom
+ - Link, Tom
+ - RouterView, Tom
+ - withRouter Tom
+
+
 ## 基本 API
 
 ### head
