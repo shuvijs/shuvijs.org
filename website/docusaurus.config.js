@@ -44,9 +44,10 @@ const siteConfig = {
         src: 'img/logo.svg',
       },
       links: [
-        { to: 'docs/getting-started', label: '文档', position: 'right' },
-        { to: 'docs/config', label: '配置', position: 'right' },
-        {to: 'docs/api', label: 'API', position: 'right'},
+        { to: 'docs/getting-started', label: 'Start', position: 'right' },
+        { to: 'docs/docs', label: 'Docs', position: 'right' },
+        { to: 'docs/api', label: 'API', position: 'right' },
+        {to: 'docs/blog', label: 'Blog', position: 'right' },
         {
           href: 'https://github.com/shuvijs/shuvi',
           label: 'GitHub',

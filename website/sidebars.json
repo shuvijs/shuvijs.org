@@ -8,6 +8,11 @@
     ],
     "获取数据": [
       "getInitialProps"
+    ],
+    "新特性": [
+      "pre6-feature/api-routes",
+      "pre6-feature/dynamic-routes",
+      "pre6-feature/router-match-rules"
     ]
   }
 }
