@@ -1,52 +1,52 @@
 ---
-id: config
-title: 配置
+id: plugin
+title: Plugin
 ---
 
-## env
+# Config
 
-- Type: `object`
-- Default: `{}`
+Shuvi uses a **`shuvi.config.js`** or **`shuvi.config.ts`** under root directory to customize different bahavior.
+The config is an object and its type can be infered by a `defineConfig` method:
 
-配置打包时替换的环境变量值。例如：
-```js
-module.exports = {
-  env: {
-    customKey: 'my-value',
-  }
-}
+```typescript  title="shuvi.config.js"
+import { defineConfig } from 'shuvi'
+
+export default defineConfig({
+  ssr: true
+})
 ```
 
-在代码种可通过 `process.env.customKey` 访问：
 
-```jsx
-function Page() {
-  return <h1>The value of customKey is: {process.env.customKey}</h1>
-}
+## ssr
 
-export default Page
-```
+- Type: `boolean`
+- Default: `true`
+
+Config whether to enable server rendering.
+
 
 ## outputPath
 
 - Type: `string`
-- Default: `dist`
+- Default: `'dist'`
 
-指定输出路径。
+Specify output directory of the bundled files.
 
 ## publicPath
 
 - Type: `string`
-- Default: `/_shuvi`
+- Default: `'/_shuvi'`
 
-配置静态资源的 `publicPath`。此路径会被添加到静态文件的访问路径前。
+
+Config publicPath of assets. This option is an equivalent of `output.publicPath` in Webpack.
+
 
 ## plugins
 
 - Type: `Plugin[]`
 - Default: `[]`
 
-配置插件。
+Config plugins
 
 ```js
 module.exports = {
@@ -72,7 +72,7 @@ module.exports = {
 - Type: `object`
 - Default: `undefined`
 
-配置代理。
+Config Api proxies.
 
 ```js
 module.exports = {
@@ -86,27 +86,29 @@ module.exports = {
 
 ## runtimeConfig
 
-设置运行时变量。示例：
+Set runtime variables which can be read on both server-side and client-side.
+
 ```js
-module.exports = {
+// shuvi.config.js
+export default {
   runtimeConfig: {
     staticFolder: '/static',
   }
 }
 ```
 
-通过如下方式访问：
+These runtimeConfig could be read via:
 ```js
 import { getRuntimeConfig } from '@shuvi/app'
 
 const { staticFolder } = getRuntimeConfig()
 // Will be available on both server-side and client-side
-console.log(publicRuntimeConfig.staticFolder)
+console.log(staticFolder)
 
 export default function MyImage() {
   return (
     <div>
-      <img src={`${publicRuntimeConfig.staticFolder}/logo.png`} alt="logo" />
+      <img src={`${staticFolder}/logo.png`} alt="logo" />
     </div>
   )
 }
@@ -117,21 +119,23 @@ export default function MyImage() {
 - Type: `string`
 - Default: `process.cwd()`
 
-设置应用程序的根目录。
+Set root directory of the application.
 
 ## router
 
 - Type: `object`
 - Default: `{ history: 'auto' }`
 
+Set router options. There is one option `history` indicates historyMode of the router.
+
 ```js
-module.exports = {
+export default {
   router: {
     hisotry: 'auto', // 'auto' | 'browser' | 'hash'
   },
 };
 ```
-* 当 `hisotry` 为 `auto` 时，启用了 ssr 则为 `browser`，反之则为 `hash`。
+* While `hisotry` set to `auto`, it will be `browser` when `ssr` is `true` and `hash` when `ssr` is `false`.
 
 
 ## routes
@@ -158,9 +162,4 @@ module.exports = {
 
 相对路径会基于 `src/pages` 目录解析。
 
-## ssr
 
-- Type: `boolean`
-- Default: `true`
-
-配置是否开启服务端渲染。
