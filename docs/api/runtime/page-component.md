@@ -1,6 +1,7 @@
 ---
-id: getInitialProps
-title: 数据获取
+id: page-component
+title: Page Component
+sidebar_position: 1
 ---
 
 ## 页面级数据获取
@@ -40,3 +41,20 @@ export default Page;
   - `redirect(301, '/target')`
 - `appContext` - 应用上下文对象，伴随者整个应用的生命周期
   - `req` - HTTP request object (server only)
+
+
+
+ - ctx Tom
+   
+ - matchRoutes Tom
+ - getRuntimeConfig Tom
+ - getPageData Tom
+ - App Tom
+ - Head Tom
+ - dynamic Tom
+ - useParams, Tom
+ - useRouter, Tom
+ - useCurrentRoute, Tom
+ - Link, Tom
+ - RouterView, Tom
+ - withRouter Tom

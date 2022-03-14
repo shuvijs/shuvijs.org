@@ -1,6 +1,6 @@
 ---
 id: getting-started
-title: quick start
+title: Getting Started
 ---
 
 ## Introduction

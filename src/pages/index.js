@@ -1,21 +1,33 @@
-/**
- * Copyright (c) 2017-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-import React from "react";
-import Link from "@docusaurus/Link";
-import useDocusaurusContext from "@docusaurus/useDocusaurusContext";
+import React from 'react';
+import clsx from 'clsx';
+import Layout from '@theme/Layout';
+import Link from '@docusaurus/Link';
 import useBaseUrl from "@docusaurus/useBaseUrl";
 
-import Layout from "@theme/Layout";
-import CodeBlock from "@theme/CodeBlock";
-
-import classnames from "classnames";
-
+import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
+// import styles from './index.module.css';
 import styles from "./styles.module.css";
+
+
+
+function HomepageHeader() {
+  const {siteConfig} = useDocusaurusContext();
+  return (
+    <header className={clsx('hero hero--primary', styles.heroBanner)}>
+      <div className="container">
+        <h1 className="hero__title">{siteConfig.title}</h1>
+        <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <div className={styles.buttons}>
+          <Link
+            className="button button--secondary button--lg"
+            to="/docs/intro">
+            Getting Started
+          </Link>
+        </div>
+      </div>
+    </header>
+  );
+}
 
 const features = [
   {
@@ -44,10 +56,10 @@ function Home() {
       permalink={"/"}
       description={"Set up a modern web app by running one command."}
     >
-      <div className={classnames("hero hero--dark", styles.heroBanner)}>
+      <div className={clsx("hero hero--dark", styles.heroBanner)}>
         <div className="container">
           <img
-            className={classnames(styles.heroBannerLogo, "margin-vert--md")}
+            className={clsx(styles.heroBannerLogo, "margin-vert--md")}
             src={useBaseUrl("img/logo.svg")}
           />
           <h1 className="hero__title">{siteConfig.title}</h1>
@@ -55,7 +67,7 @@ function Home() {
           <div className={styles.getStarted}>
             <Link
               className="button button--outline button--primary button--lg"
-              to={useBaseUrl("docs/started")}
+              to={useBaseUrl("docs/introduction/getting-started")}
             >
               开始使用
             </Link>
@@ -69,7 +81,7 @@ function Home() {
               {features.map(({ title, content }, idx) => (
                 <div
                   key={idx}
-                  className={classnames("col col--4", styles.feature)}
+                  className={clsx("col col--4", styles.feature)}
                 >
                   <h2>{title}</h2>
                   <p>{content}</p>
