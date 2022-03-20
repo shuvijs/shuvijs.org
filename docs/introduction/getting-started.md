@@ -5,35 +5,33 @@ title: Getting Started
 
 ## Introduction
 
+Meta Framework to create applications quickly.
+
 shuvi is a front-end application development solution that integrates modern tool chains and focuses on improving development experience and efficiency.
 
 ## System Requirements
 
-- [node 14.x](https://github.com/nodejs/Release)
-
-- npm with node version
+- [node ^14.x](https://github.com/nodejs/Release)
 
 ## Start
 
 Create a new directory and init `package.json`
 
 ```sh
-mkdir shuvi-app & cd shuvi-app
+mkdir shuvi-app && cd shuvi-app
 npm init -y
 ```
 
 Install shuvi
 
 ```sh
-npm install shuvi@last
+npm i shuvi@last
 ```
 
 Create `src/pages` directory, then generate a page with `hello, world`:
 ```sh
-mkdir -p src/pages
-cat <<EOF >> /src/pages/index.js
-export default () => <div>hello, world</div>
-EOF
+mkdir -p src/pages && 
+echo "export default () => <div>hello, world</div>" > ./src/pages/index.js
 ```
 
 Open `package.json` and add the following `scripts`:

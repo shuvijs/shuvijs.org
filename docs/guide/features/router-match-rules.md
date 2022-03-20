@@ -108,8 +108,10 @@ Note that `*` technically also marks a parameter as optional but `?` parameters 
 
 ```js
 const routes = [
-  // will match everything and put it under `$route.params._other`
-  { path: '/:_other(.*)', name: 'NotFound', component: NotFound },
+  // will match /user/... and put it under `$route.params._other`
+  { path: '/user/:_other(.*)', name: 'NotFound', component: NotFound },
+  // will match /user, /user/... and put it under `$route.params._other`
+  { path: '/user/:_other(.*)?', name: 'NotFound', component: NotFound },
   // will match anything starting with `/user-` and put it under `$route.params.afterUser`
   { path: '/user-:afterUser(.*)', component: UserGeneric },
 ]

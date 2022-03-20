@@ -1,27 +1,9 @@
 ---
-id: api-routes
-title: api routes
+id: custom-plugin
+title: custom plugin
 ---
 
 # API Routes
-
-API routes provide a solution to build your **API** with shuvi.
-
-Any file inside the folder `src/apis`, Each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
-
-```tip
-route prefix can be defined in `shuviConfig` `apiConfig.prefix`, default string`'api'`
-```
-
-| path                           | route                        | matched url                                  |
-| ------------------------------ | ---------------------------- | -------------------------------------------- |
-| apis/post/create.js            | /api/post/create             | /api/post/create                             |
-| apis/post/[pid].js             | /api/post/:pid               | /api/post/1, /api/post/abc                   |
-| apis/post/[[pid]].js           | /api/post/:pid?              | /api/post, /api/post/1, /api/post/abc        |
-| apis/post/[...pid].js          | /api/post/:pid+              | /api/post/1/2, /api/post/a/b/c               |
-| apis/post/[[...pid]].js        | /api/post/:pid*              | /api/post, /api/post/1/2, /api/post/a/b/c    |
-
-For example, the following API route `pages/api/user.js` returns a `json` response with a status code of `200`:
 
 ```js
 export default function handler(req, res) {

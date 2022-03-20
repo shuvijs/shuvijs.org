@@ -6,15 +6,6 @@ sidebar_position: 1
 
 This is an overview of guide
 
-
-## features Tom
-
-- Faas
-- Api-route
-- Dynamic routes
-- _middleware
-
-
 ## Config Repraance
 
 - outputPath?: string;

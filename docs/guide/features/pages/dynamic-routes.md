@@ -1,11 +1,9 @@
 ---
 id: dynamic-routes
-title: dynamic routes
-description: Dynamic Routes are pages and apis that allow you to add custom params to your URLs.
+title: Dynamic Routes
 ---
 
 # Dynamic Routes
-
 
 Defining routes by using predefined paths is not always enough for complex applications. In shuvi you can add brackets to a page (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
 
@@ -77,7 +75,7 @@ The main difference between catch all and optional catch all routes is that with
 
 The `params` objects are as follows:
 
-```json
+```javascript
 { } // GET `/post` (empty object)
 { "slug": ["a"] } // `GET /post/a` (single-element array)
 { "slug": ["a", "b"] } // `GET /post/a/b` (multi-element array)
@@ -95,16 +93,4 @@ files under `src/pages`, file path `pages/*/*.js`
 | pages/post/[...pid].js         | /post/:pid+              | /post/1/2, /post/a/b/c                   |
 | pages/post/[[...pid]].js       | /post/:pid*              | /post, /post/1/2, /post/a/b/c            |
 
-
-files under `src/apis`, file path `apis/*/*.js`
-```tip
-route prefix can be defined in `shuviConfig` `apiConfig.prefix`, default string`'api'`
-```
-
-| path                           | route                        | matched url                                  |
-| ------------------------------ | ---------------------------- | -------------------------------------------- |
-| apis/post/create.js            | /api/post/create             | /api/post/create                             |
-| apis/post/[pid].js             | /api/post/:pid               | /api/post/1, /api/post/abc                   |
-| apis/post/[[pid]].js           | /api/post/:pid?              | /api/post, /api/post/1, /api/post/abc        |
-| apis/post/[...pid].js          | /api/post/:pid+              | /api/post/1/2, /api/post/a/b/c               |
-| apis/post/[[...pid]].js        | /api/post/:pid*              | /api/post, /api/post/1/2, /api/post/a/b/c    |
+> [details about matched rules](/docs/guide/features/router-match-rules)
