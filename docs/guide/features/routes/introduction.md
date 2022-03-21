@@ -41,7 +41,7 @@ The router supports nested files. If you create a nested folder structure, files
 - `pages/blog/first-post.js` → `/blog/first-post`
 - `pages/dashboard/settings/username.js` → `/dashboard/settings/username`
 
-### [Dynamic route segments](/docs/guide/features/pages/dynamic-routes)
+### [Dynamic route segments](./dynamic-routes)
 
 To match a dynamic segment, you can use the bracket syntax. This allows you to match named parameters.
 
