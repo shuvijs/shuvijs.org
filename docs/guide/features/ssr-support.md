@@ -34,7 +34,7 @@ export default Page
  1. When you request this page directly, `getInitialProps` runs at request time, and this page will be rendered with the returned props
 
  - [] api getInitialProps link
- 1. When you request this page on client-side page transitions through [`shuvi/link`](/docs/api-reference/next/link.md), shuvi sends an API request to the server, which runs `getInitialProps`
+ 1. When you request this page on client-side page transitions through [`shuvi/link`](#666), shuvi sends an API request to the server, which runs `getInitialProps`
 
 It then returns `JSON` that contains the result of running `getInitialProps`, that `JSON` will be used to render the page. All this work will be handled automatically by Shuvi, so you don’t need to do anything extra as long as you have `getInitialProps` defined.
 
@@ -50,7 +50,7 @@ It then returns `JSON` that contains the result of running `getInitialProps`, th
   
 - throw error if necessary 
   
-  If an error is thrown inside `getInitialProps`, it will show the `pages/500.js` file and status code will be 500. Check out the documentation for [500 page](/docs/advanced-features/custom-error-page#500-page) to learn more on how to create it.
+  If an error is thrown inside `getInitialProps`, it will show the `pages/500.js` file and status code will be 500. Check out the documentation for [500 page](./custom-error.md#500-page) to learn more on how to create it.
   ```javascript
   function errPage({ position }) {
       return <div id="ctx-error">Ctx.error Page Render: {position}</div>;
@@ -68,4 +68,4 @@ It then returns `JSON` that contains the result of running `getInitialProps`, th
 
 - [] api getInitialProps link
 
-The [`getInitialProps` API reference](/docs/api-reference/data-fetching/get-server-side-props.md) covers all parameters and props that can be used with `getInitialProps`.
+The [`getInitialProps` API reference](#666) covers all parameters and props that can be used with `getInitialProps`.

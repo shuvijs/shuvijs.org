@@ -27,7 +27,7 @@ In addition to `fetch()` on the client-side, Next.js polyfills `fetch()` in the 
 
 If your own code or any external npm dependencies require features not supported by your target browsers, you need to add polyfills yourself.
 
-In this case, you should add a top-level import for the **specific polyfill** you need in your [Custom `<App>`](/docs/advanced-features/custom-app.md) or the individual component.
+In this case, you should add a top-level import for the **specific polyfill** you need in your [Custom `<App>`](#666) or the individual component.
 
 ## Dotenv
 
@@ -89,7 +89,7 @@ body {
 }
 ```
 
-Create a [`pages/_app.js` file](/docs/guide/features/custom-app) if not already present.
+Create a [`pages/_app.js` file](./custom-app.md) if not already present.
 Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file.
 
 ```jsx
@@ -102,7 +102,7 @@ export default function MyApp({ Component, pageProps }) {
 ```
 
 These styles (`styles.css`) will apply to all pages and components in your application.
-Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`pages/_app.js`](/docs/advanced-features/custom-app.md)**.
+Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`pages/_app.js`](#666)**.
 
 In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 
@@ -339,10 +339,25 @@ export default () => (
 );
 ```
 
+## Serving Static Files
+
+To serve static files such as images, CSS files, and JavaScript files, All files under the `/public` will be static resources for visit
+   
+   ```javascript
+   // /public/user.json
+   {
+      "name": "foo"
+   }
+   ```
+   visit url: `/_shuvi/user.json`
+
+> `_shuvi` is publicPath, `user.json` is relative path to `/public`
+
+
 ## Change Public Path
 
-   Default publicPath is `_shuvi`, There is a way to override runtime publicPath:
-   
+Default publicPath is `_shuvi`, There is a way to override runtime publicPath:
+
    ```javascript
    // /src/document
    import { IDENTITY_RUNTIME_PUBLICPATH } from '@shuvi/shared/lib/constants';
@@ -359,18 +374,4 @@ export default () => (
       return documentProps;
    }
    ```
-   > override code should run first then other codes
-
-## Serving Static Files
-
-To serve static files such as images, CSS files, and JavaScript files, All files under the `/public` will be static resources for visit
-   
-   ```javascript
-   // /public/user.json
-   {
-      "name": "foo"
-   }
-   ```
-   visit url: `/_shuvi/user.json`
-
-> `_shuvi` is publicPath, `user.json` is relative path to `/public`
+> override code should run ahead of other codes
