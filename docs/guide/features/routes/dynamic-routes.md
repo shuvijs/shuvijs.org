@@ -3,8 +3,6 @@ id: dynamic-routes
 title: Dynamic Routes
 ---
 
-# Dynamic Routes
-
 Defining routes by using predefined paths is not always enough for complex applications. In shuvi you can add brackets to a page (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
 
 Consider the following page `pages/post/[pid].js`:
@@ -45,7 +43,7 @@ Multiple dynamic route segments work the same way. The page `pages/post/[pid]/[c
 { "pid": "abc", "comment": "a-comment" }
 ```
 
-### Catch all routes
+## Catch all routes
 
 Dynamic routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:
 
@@ -65,7 +63,7 @@ And in the case of `/post/a/b`, and any other matching path, new parameters will
 { "slug": ["a", "b"] }
 ```
 
-### Optional catch all routes
+## Optional catch all routes
 
 Catch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`).
 

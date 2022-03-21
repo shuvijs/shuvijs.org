@@ -1,9 +1,7 @@
 ---
 id: router-match-rules
-title: router match rules
+title: Router Match Rules
 ---
-
-# New dynamic Route Matching rules
 
 1. A _param_ is denoted by a colon `:`  
 1. colon `:` is **necessary** for _param_

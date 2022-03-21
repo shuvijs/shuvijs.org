@@ -1,9 +1,9 @@
 ---
 id: api-routes
-title: api routes
+title: Api Routes
 ---
 
-# API Routes
+## API Routes
 
 API routes provide a solution to build your **API** with shuvi.
 
@@ -48,7 +48,7 @@ export default function handler(req, res) {
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
-# enhanced request
+### enhanced request
 
 API routes provide built in middlewares which parse the incoming request (`req`). Those middlewares are:
 
@@ -56,7 +56,7 @@ API routes provide built in middlewares which parse the incoming request (`req`)
 - `req.query` - An object containing the [query string](https://en.wikipedia.org/wiki/Query_string). Defaults to `{}`
 - `req.body` - An object containing the body parsed by `content-type`, or `null` if no body was sent
 
-## Custom config
+### Custom config
 
 Every API route can export a `config` object to change the default configs, which are the following:
 
@@ -94,7 +94,7 @@ export const config = {
 }
 ```
 
-# enhanced response
+### enhanced response
 
 The response (`res`) includes a set of Express.js-like methods to improve the developer experience and increase the speed of creating new API endpoints, take a look at the following example:
 

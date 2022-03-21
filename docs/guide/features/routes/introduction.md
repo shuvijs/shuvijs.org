@@ -3,7 +3,7 @@ id: introduction
 title: Introduction
 ---
 
-# Pages
+## Pages
 
 A **page** is a [React Component](https://reactjs.org/docs/components-and-props.html) exported from a `.js`, `.jsx`, `.ts`, or `.tsx` file in the `pages` directory. 
 
@@ -19,7 +19,7 @@ function About() {
 export default About
 ```
 
-# Routing
+## Routing
 
 shuvi has a file-system based router built on the [concept of pages](#Pages).
 
@@ -27,21 +27,21 @@ When a file is added to the `pages` directory, it's automatically available as a
 
 The files inside the `pages` directory can be used to define most common patterns.
 
-#### Index routes
+### Index routes
 
 The router will automatically route files named `index` to the root of the directory.
 
 - `pages/index.js` → `/`
 - `pages/blog/index.js` → `/blog`
 
-#### Nested routes
+### Nested routes
 
 The router supports nested files. If you create a nested folder structure, files will automatically be routed in the same way still.
 
 - `pages/blog/first-post.js` → `/blog/first-post`
 - `pages/dashboard/settings/username.js` → `/dashboard/settings/username`
 
-#### [Dynamic route segments](/docs/guide/features/pages/dynamic-routes)
+### [Dynamic route segments](/docs/guide/features/pages/dynamic-routes)
 
 To match a dynamic segment, you can use the bracket syntax. This allows you to match named parameters.
 
@@ -49,7 +49,7 @@ To match a dynamic segment, you can use the bracket syntax. This allows you to m
 - `pages/[username]/settings.js` → `/:username/settings` (`/foo/settings`)
 - `pages/post/[...all].js` → `/post/*` (`/post/2020/id/title`)
 
-## Linking between pages
+### Linking between pages
 
 The Next.js router allows you to do client-side route transitions between pages, similar to a single-page application.
 

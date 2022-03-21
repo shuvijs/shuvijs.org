@@ -25,4 +25,4 @@ Each route is a dynamic entry in shuvi. Some optimizations based on it.
           return <div>about</div>
         }
         ```
-1. Each route is lazy entry in production. it is on demand download when user visit a route.
+1. Each route is lazy entry in production. it is on demand loaded when user visit a route.
