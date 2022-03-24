@@ -5,9 +5,7 @@ title: Getting Started
 
 ## Introduction
 
-Meta Framework to create applications quickly.
-
-shuvi is a front-end application development solution that integrates modern tool chains and focuses on improving development experience and efficiency.
+shuvi is a front-end application development solution that integrates modern tool chains, focuses on improving development experience and efficiency.
 
 ## System Requirements
 

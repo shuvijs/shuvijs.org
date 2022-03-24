@@ -29,7 +29,7 @@ export default function About() {
 
 ## How To Custom App
 
-There is way to override `<App />`, add `src/pp.js` or `src/app.ts`, `export default` HOC of `<App />`.
+There is way to override `<App />`, add `src/app.js` or `src/app.ts`, `export default` HOC of `<App />`.
 
 - The example below show add a listener to router.
   
@@ -57,6 +57,7 @@ There is way to override `<App />`, add `src/pp.js` or `src/app.ts`, `export def
   export default getApp;
   ```
 
+<div id="example-override-getInitialProps"></div>
 - The example below, override method `getInitialProps`.
 
   > When you add getInitialProps in your custom app, do not forget to **call `fetchInitialProps` inside `getInitialProps`**.
@@ -99,3 +100,5 @@ There is way to override `<App />`, add `src/pp.js` or `src/app.ts`, `export def
 - Inject additional common data into pages
 - Add a listener to router
 - [Add global CSS](./basic-support.md#adding-a-global-stylesheet)
+
+> `src/app.js` use HOC warp `<App />` layer by layer, just like a nesting doll. The HOC order is very important sometimes, especially for which HOC should be the closest to `<App />`. A other way to add the closest to `<App />` without care about order is [`src/runtime.js`](./custom-runtime.md).
