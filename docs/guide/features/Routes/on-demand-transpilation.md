@@ -18,11 +18,11 @@ Each route is a dynamic entry in shuvi. Some optimizations based on it.
         ```javascript
         //about route is compiling...
         ```
-   1.  after compiled, about route will be replace to empty route by [fast fresh](/docs/guide/features/fast-refresh).
+   2.  after compiled, about route will be replace to empty route by [fast fresh](../fast-refresh.md).
          ```javascript
         //about route
         export default function(){
           return <div>about</div>
         }
         ```
-1. Each route is lazy entry in production. it is on demand loaded when user visit a route.
+2. Each route is lazy entry in production. it is on demand loaded when user visit a route.
