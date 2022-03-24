@@ -1,9 +1,13 @@
 ---
-id: ssr-support
-title: Server-side Rendering
+sidebar_position: 03
+id: GetInitialProps
 ---
 
-shuvi support **Server-side Rendering** for each page, the page HTML is generated on **each request**, can be disabled by config.
+## Isomorph Render
+
+shuvi support two modes that is **Server-side Rendering**(default) and **Single Page Application** for all pages(Only one mode can be selected).
+
+> change default mode, set ssr to false
 
 For example, suppose that your page needs to SEO friendly or frequently updated data(fetched from an external API). You can write `getInitialProps` which fetches this data and passes it to `Page` like below:
 
@@ -38,11 +42,15 @@ export default Page
 
 It then returns `JSON` that contains the result of running `getInitialProps`, that `JSON` will be used to render the page. All this work will be handled automatically by Shuvi, so you don’t need to do anything extra as long as you have `getInitialProps` defined.
 
-## What does getInitialProps abilities
+## What does getInitialProps ability
+
+- inject props to component
+
+  Just return object in `getInitialProps`, The object will be inject to component.
 
 - data fetching on both server-side and client-side
   
-    fetch data is common todo in `getInitialProps`, and it will blocked render during fetching.
+  fetch data is common thing in `getInitialProps`, and it will **blocked render** during fetching.
   
 - redirect before rendered
 
@@ -69,3 +77,11 @@ It then returns `JSON` that contains the result of running `getInitialProps`, th
 - [] api getInitialProps link
 
 The [`getInitialProps` API reference](#666) covers all parameters and props that can be used with `getInitialProps`.
+
+## Why server-side rendering?
+
+There are three main reasons to create a Universal version of your application.
+
+- Facilitate web crawlers through [search engine optimization (SEO)](https://developers.google.com/search/docs/beginner/seo-starter-guide)
+- Improve performance on mobile and low-powered devices
+- Show the first page quickly with a [first-contentful paint (FCP)](https://web.dev/first-contentful-paint/)

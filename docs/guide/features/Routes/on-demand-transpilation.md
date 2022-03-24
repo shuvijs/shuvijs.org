@@ -1,6 +1,6 @@
 ---
-id: on-demand-transpilation
-title: On Demand Transpilation
+sidebar_position: 03
+id: On Demand Transpilation
 ---
 
 Each route is a dynamic entry in shuvi. Some optimizations based on it.

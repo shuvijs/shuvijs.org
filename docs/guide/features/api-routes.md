@@ -1,13 +1,13 @@
 ---
-id: api-routes
-title: Api Routes
+sidebar_position: 20
+id: Api Routes
 ---
 
 ## API Routes
 
 API routes provide a solution to build your **API** with shuvi.
 
-Any file inside the folder `src/apis`, Each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
+Any file inside the folder `src/apis`, each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
 
 ```tip
 route prefix can be defined in `shuviConfig` `apiConfig.prefix`, default string`'api'`
