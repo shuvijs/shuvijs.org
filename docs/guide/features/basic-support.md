@@ -53,11 +53,11 @@ shuvi has built-in TypeScript support. shuvi provide types both runtime and plug
 ## CSS Support
 
 shuvi allows you to import CSS files from a JavaScript file.
-This is possible because Next.js extends the concept of [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.
+This is possible because shuvi extends the concept of [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.
 
 ### Adding a Global Stylesheet
 
-To add a stylesheet to your application, import the CSS file within `pages/_app.js`.
+To add a stylesheet to your application, import the CSS file within `src/app.js`.
 
 For example, consider the following stylesheet named `styles.css`:
 
@@ -71,20 +71,16 @@ body {
 }
 ```
 
-Create a [`pages/_app.js` file](./custom-app.md) if not already present.
+Create a [`pages/src.js` file](./custom-app.md) if not already present.
 Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file.
 
 ```jsx
 import '../styles.css'
-
-// This default export is required in a new `pages/_app.js` file.
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+export default (App) => <App />;
 ```
 
 These styles (`styles.css`) will apply to all pages and components in your application.
-Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`pages/_app.js`](#666)**.
+Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`src/app.js`](./custom-app.md)**.
 
 In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 
@@ -92,16 +88,13 @@ In production, all CSS files will be automatically concatenated into a single mi
 
 ### Import styles from `node_modules`
 
-For global stylesheets, like `bootstrap` or `nprogress`, you should import the file inside `pages/_app.js`.
+For global stylesheets, like `bootstrap` or `nprogress`, you should import the file inside `src/app.js`.
 For example:
 
 ```jsx
-// pages/_app.js
+// src/app.js
 import 'bootstrap/dist/css/bootstrap.css'
-
-export default function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
-}
+export default (App) => <App />;
 ```
 
 For importing CSS required by a third party component, you can do so in your component. For example:
