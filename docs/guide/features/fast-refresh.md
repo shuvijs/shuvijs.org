@@ -1,6 +1,6 @@
 ---
-id: fast-refresh
-title: Fast Refresh
+sidebar_position: 04
+id: Fast Refresh
 ---
 
 # Fast Refresh
@@ -8,7 +8,7 @@ title: Fast Refresh
 
 Fast Refresh is a shuvi feature that gives you instantaneous feedback on
 edits made to your React components. Fast Refresh is enabled by default. 
-With Next.js Fast Refresh enabled, most edits should be visible within a second, **without losing component
+With Fast Refresh enabled, most edits should be visible within a second, **without losing component
 state**.
 
 ## How It Works

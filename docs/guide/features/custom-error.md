@@ -1,94 +1,73 @@
 ---
-id: custom-error
-title: custom error
+sidebar_position: 83
+id: Custom Error
 ---
 
-# API Routes
+If an error occurred, shuvi render error page. In [SSR mode](./getInitialProps.md#isomorph-render), response.statusCode will be set when server render HTML.
+
+> error page is not part of route, [getInitialProps](./getInitialProps.md#what-does-getinitialprops-ability) is invalid.
+
+## Default Error Message
+
+Error component accept error props as shown below:
 
 ```js
-export default function handler(req, res) {
-  res.status(200).json({ name: 'John Doe' })
+// ...style
+function error({ errorCode, errorDesc }) {
+  return (
+    <div style={style.container}>
+      <Head>
+        <title>Page Error</title>
+      </Head>
+
+      <div style={style.error}>
+        <div style={style.errorCode}>{errorCode}</div>
+        {errorDesc && <div style={style.errorDesc}>{errorDesc}</div>}
+      </div>
+    </div>
+  );
 }
 ```
 
-For an API route to work, you need to export a function as default (a.k.a **request handler**), which then receives the following parameters:
+## Custom Error Page
 
-- `req`: An instance of [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage), plus some [enhanced request](#enhanced-request)
-- `res`: An instance of [http.ServerResponse](https://nodejs.org/api/http.html#http_class_http_serverresponse), plus some [enhanced response](#enhanced-response)
-
-To handle different HTTP methods in an API route, you can use `req.method` in your request handler, like so:
-
-```js
-export default function handler(req, res) {
-  if (req.method === 'POST') {
-    // Process a POST request
-  } else {
-    // Handle any other HTTP method
-  }
-}
+To create a custom error page you can create a `src/error.js` file.
+```javascript
+import React from 'react';
+import { Link } from '@shuvi/runtime';
+export default ({ errorCode, errorDesc }) => {
+  const [showError, setErrorStatus] = React.useState(false);
+  React.useEffect(() => {
+    setErrorStatus(true);
+  });
+  return (
+    <div style={{ color: 'red' }}>
+      <div id="error">
+        custom error {errorCode} {errorDesc}
+      </div>
+      <br />
+      <Link id="to-about" to="/about">
+        about
+      </Link>
+      {showError ? (
+        <div id="error-show-client">error only in client for test</div>
+      ) : null}
+    </div>
+  );
+};
 ```
 
-To fetch API endpoints, take a look into any of the examples at the start of this section.
+### 404 Page
 
-# enhanced request
+  To create a custom error page you can create a `src/404.js` file.
 
-API routes provide built in middlewares which parse the incoming request (`req`). Those middlewares are:
+### 500 Page
 
-- `req.cookies` - An object containing the cookies sent by the request. Defaults to `{}`
-- `req.query` - An object containing the [query string](https://en.wikipedia.org/wiki/Query_string). Defaults to `{}`
-- `req.body` - An object containing the body parsed by `content-type`, or `null` if no body was sent
+  To create a custom error page you can create a `src/500.js` file.
 
-## Custom config
+## Error Priority
 
-Every API route can export a `config` object to change the default configs, which are the following:
+There is two specific custom error page `404` and `500`, which one should be rendered decide by `errorCode`.
 
-```js
-export const config = {
-  apiConfig: {
-    bodyParser: {
-      sizeLimit: '1mb',
-    },
-  },
-}
-```
-
-The `api` object includes all configs available for API routes.
-
-`bodyParser` Enables body parsing, you can disable it if you want to consume it as a `Stream`:
-
-```js
-export const config = {
-  apiConfig: {
-    bodyParser: false,
-  },
-}
-```
-
-`bodyParser.sizeLimit` is the maximum size allowed for the parsed body, in any format supported by [bytes](https://github.com/visionmedia/bytes.js), like so:
-
-```js
-export const config = {
-  apiConfig: {
-    bodyParser: {
-      sizeLimit: '500kb',
-    },
-  },
-}
-```
-
-# enhanced response
-
-The response (`res`) includes a set of Express.js-like methods to improve the developer experience and increase the speed of creating new API endpoints, take a look at the following example:
-
-```js
-export default function handler(req, res) {
-  res.status(200).json({ name: 'shuvi' })
-}
-```
-
-The included helpers are:
-
-- `res.status(code)` - A function to set the status code. `code` must be a valid [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
-- `res.json(body)` - Sends a JSON response. `body` must be a [serialiazable object](https://developer.mozilla.org/en-US/docs/Glossary/Serialization)
-- `res.send(body)` - Sends the HTTP response. `body` can be a `string`, an `object` or a `Buffer`
-- `res.redirect([status,] path)` - Redirects to a specified path or URL. `status` must be a valid [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). If not specified, `status` defaults to "307" "Temporary redirect".
+  - when `errorCode` is 500, rendered `src/500.js` first. If no found, rendered `src/error.js` second. If no found, rendered `default error`.
+  - when `errorCode` is 400, rendered `src/error.js` first. If no found, rendered `default error`.

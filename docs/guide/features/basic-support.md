@@ -1,56 +1,32 @@
 ---
-id: basic-support
-title: Basic Support
+sidebar_position: 01
+id: Basic Support
 ---
 
 ## Supported Browsers and Features
 
-Next.js supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
+Shuvi supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
 
 ## Polyfills
 
 We transparently inject polyfills required for IE11 compatibility. In addition, we also inject widely used polyfills, including:
 
-- [**fetch()**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch` and `unfetch`.
-- [**URL**](https://developer.mozilla.org/en-US/docs/Web/API/URL) — Replacing: the [`url` package (Node.js API)](https://nodejs.org/api/url.html).
-- [**Object.assign()**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — Replacing: `object-assign`, `object.assign`, and `core-js/object/assign`.
+- [**Promise**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [**fetch**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+- [**Object.assign**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
+- [**Symbol**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol).
+- [**Spread syntax (...)**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
 
-If any of your dependencies includes these polyfills, they’ll be eliminated automatically from the production build to avoid duplication.
+### client-Side Polyfills
 
-In addition, to reduce bundle size, Next.js will only load these polyfills for browsers that require them. The majority of the web traffic globally will not download these polyfills.
+Use node native module belows on client-side, will not throw error when bundled.
 
-### Server-Side Polyfills
-
-In addition to `fetch()` on the client-side, Next.js polyfills `fetch()` in the Node.js environment. You can use `fetch()` in your server code (such as `getStaticProps`/`getServerSideProps`) without using polyfills such as `isomorphic-unfetch` or `node-fetch`.
-
-### Custom Polyfills
-
-If your own code or any external npm dependencies require features not supported by your target browsers, you need to add polyfills yourself.
-
-In this case, you should add a top-level import for the **specific polyfill** you need in your [Custom `<App>`](#666) or the individual component.
-
-## Dotenv
-
-shuvi support [dotenv](https://github.com/motdotla/dotenv) by default.
-
-loaded `.env` files what under application root directory by `process.env.NODE_ENV`, The priority as showed below:
-
-```javascript
-const mode = process.env.NODE_ENV;
-// Priority top to bottom
-const dotenvFiles = [
-  `.env.${mode}.local`,
-  `.env.local`,
-  `.env.${mode}`,
-  '.env'
-];
-```
-
-## Typescript Support
-
-shuvi has built-in TypeScript support. shuvi provide types both runtime and plugins.
-
-- [ ] link runtime and plugins type, https://nextjs.org/docs/basic-features/typescript
+- [stream](https://www.npmjs.com/package/stream-browserify) 
+- [path](https://www.npmjs.com/package/path-browserify) 
+- [crypto](https://www.npmjs.com/package/crypto-browserify) 
+- [buffer, Buffer](https://www.npmjs.com/package/buffer) 
+- [vm](https://www.npmjs.com/package/vm-browserify) 
+- [process](https://www.npmjs.com/package/process) 
 
 ## JavaScript Language Features
 
@@ -67,6 +43,12 @@ In addition to [ES6 features](https://github.com/lukehoban/es6features), also su
 - [Nullish Coalescing](https://github.com/tc39/proposal-nullish-coalescing) (ES2020)
 - [Class Fields](https://github.com/tc39/proposal-class-fields) and [Static Properties](https://github.com/tc39/proposal-static-class-features) (part of stage 3 proposal)
 - and more!
+
+## Typescript Support
+
+shuvi has built-in TypeScript support. shuvi provide types both runtime and plugins.
+
+- [ ] link runtime and plugins type, https://nextjs.org/docs/basic-features/typescript
    
 ## CSS Support
 
@@ -215,6 +197,64 @@ Sass support has the same benefits and restrictions as the built-in CSS support 
 > If you're not sure which to choose, start with the `.scss` extension which is a superset of CSS, and doesn't require you learn the
 > Indented Syntax ("Sass").
 
+## Runtime Config
+
+Runtime config is a Store for application storage constants values. 
+
+Users can get the Store by call `getRuntimeConfig` everywhere both client-side and server-side.
+
+```javascript
+import { getRuntimeConfig } from '@shuvi/runtime';
+
+const isServer = typeof window === 'undefined';
+const runtimeConfig = getRuntimeConfig();
+
+const getApp = App => () =>
+  (
+    <div>
+      <div id="app">{isServer ? null : runtimeConfig.a}</div>
+      <App />
+    </div>
+  );
+
+export default getApp;
+```
+
+> The Store key which start with `$` only can be got on server-side.
+
+## Dotenv
+
+shuvi support [dotenv](https://github.com/motdotla/dotenv) by default. Loads environment variables from a `.env` file into [process.env](https://nodejs.org/docs/latest/api/process.html#process_process_env).
+
+shuvi can loaded env files that under application root directory and files name should include `process.env.NODE_ENV`, The priority and file name rules as showed below:
+
+```javascript
+const mode = process.env.NODE_ENV;
+// Priority top to bottom
+const dotenvFiles = [
+  `.env.${mode}.local`,
+  `.env.local`,
+  `.env.${mode}`,
+  '.env'
+];
+```
+
+## Global Constant
+
+shuvi inject some global constant to replaces variables in your code with other values or expressions at **compile** time. [examples usage](https://webpack.js.org/plugins/define-plugin/#usage)
+
+collect constants form `process.env`, `config.env` and some is shuvi defined.
+
+  - `process.env`: The key should startWith `SHUVI_PUBLIC_`.
+  
+  - `config.env`: The key should match Regex `/^(?:NODE_.+)|^(?:__.+)$/i`.
+
+  - shuvi defined
+
+    - `'process.env.NODE_ENV': JSON.stringify(isDev ? 'development' : 'production')`
+    - `__BROWSER__: isClientSide?true:false,`
+    - `'process.env': JSON.stringify('{}')` **only inject on client-side**
+
 ## Dynamic Import
 
 
@@ -255,7 +295,7 @@ export function Hello() {
 To dynamically import the `Hello` component, you can return it from the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) returned by [`import()`](https://github.com/tc39/proposal-dynamic-import#example), like so:
 
 ```jsx
-import dynamic from 'next/dynamic'
+import { dynamic } from "@shuvi/runtime";
 
 const DynamicComponent = dynamic(() =>
   import('../components/hello').then((mod) => mod.Hello)
@@ -323,7 +363,7 @@ export default NoSSR
 
 ### Dynamic Invalid
 
-If there is already a normal module by `import`, Dynamic will be invalid.
+If there is already a normal module by `import`, `dynamic` will be invalid.
 
 ```javascript
 import { dynamic } from "@shuvi/runtime";

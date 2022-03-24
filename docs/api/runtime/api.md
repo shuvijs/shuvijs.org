@@ -202,23 +202,3 @@ export default () => {
   );
 };
 ```
-
-## Nodejs API
-
-```js
-// server.js
-const { createServer } = require("http");
-const { parse } = require("url");
-const shuvi = require("shuvi");
-
-const dev = process.env.NODE_ENV !== "production";
-const app = shuvi({ dev });
-
-try {
-  await app.listen(3000);
-  console.log(`Ready on http://localhost:${port}`);
-} catch (err) {
-  console.error(err);
-  process.exit(1);
-}
-```

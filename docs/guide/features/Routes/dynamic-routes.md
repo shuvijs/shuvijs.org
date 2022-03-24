@@ -1,6 +1,6 @@
 ---
-id: dynamic-routes
-title: Dynamic Routes
+sidebar_position: 02
+id: Dynamic Routes
 ---
 
 Defining routes by using predefined paths is not always enough for complex applications. In shuvi you can add brackets to a page (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
