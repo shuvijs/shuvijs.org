@@ -21,7 +21,7 @@ export default About
 
 ## Routing
 
-shuvi has a file-system based router built on the [concept of pages](#Pages).
+shuvi has a file-system based router built on the [concept of pages](#pages).
 
 When a file is added to the `pages` directory, it's automatically available as a route.
 
