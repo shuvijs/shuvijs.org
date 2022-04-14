@@ -219,7 +219,7 @@ export default getApp;
 
 shuvi support [dotenv](https://github.com/motdotla/dotenv) by default. Loads environment variables from a `.env` file into [process.env](https://nodejs.org/docs/latest/api/process.html#process_process_env).
 
-shuvi can loaded env files that under application root directory and files name should include `process.env.NODE_ENV`, The priority and file name rules as showed below:
+shuvi can loaded env files that under application root directory, Special files name (such as development `.env` or production `.env`) should include `process.env.NODE_ENV`, The priority and file name rules as showed below:
 
 ```javascript
 const mode = process.env.NODE_ENV;
@@ -231,7 +231,9 @@ const dotenvFiles = [
   '.env'
 ];
 ```
-
+> low priority `.env` file content will be override by higher priority `.env` file content, it dependencies `process.env.NODE_ENV`.
+> default `process.env.NODE_ENV` is `development` when `shuvi dev` mode and `production` when `shuvi build` or `shuvi serve`.
+> recommend split all `env variable` to `.env`(common env), `.env.development`(env for development) and `.env.production`(env for production).
 ## Global Constant
 
 shuvi inject some global constant to replaces variables in your code with other values or expressions at **compile** time. [examples usage](https://webpack.js.org/plugins/define-plugin/#usage)

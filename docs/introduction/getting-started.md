@@ -16,7 +16,7 @@ shuvi is a front-end application development solution that integrates modern too
 Create a new directory and init `package.json`
 
 ```sh
-mkdir shuvi-app && cd shuvi-app
+mkdir my-app && cd my-app
 npm init -y
 ```
 

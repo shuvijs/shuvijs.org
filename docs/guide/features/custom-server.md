@@ -2,9 +2,15 @@
 sidebar_position: 84
 id: Custom Server
 ---
+
 ## How to Custom Document
 
-To create a custom error page you can create a `src/server.js` file. `export` with `getPageData`, `modifyHtml`,`renderToHTML` and `middlewares`.
+To create a custom error page you can create a `src/server.js` file. `export` with `getPageData`, `modifyHtml`,`renderToHTML` and `middlewares`, all that methods ***only work in server side***.
+
+  - `getPageData` add extra data to application. 
+  - `modifyHtml` modify document props.
+  - `renderToHTML` last chance to modify rendered html before it be sended to browser.
+  - `middlewares` allow add custom middlewares to server for handler request and response.
 
 ```javascript
 // src/server.js
