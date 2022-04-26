@@ -45,27 +45,32 @@ Config publicPath of assets. This option is an equivalent of `output.publicPath`
 ## plugins
 
 - Type: `Plugin[]`
+  
+  `Plugin` can be
+  - `string`: the path to the plugin or package name
+  - `[string, PluginOptions = any]`: the second item is the plugin options.
+  - `CorePluginInstance`: the CorePlugin instance created by [`createCorePlugin`](./plugin/corePlugin-api.md)
 - Default: `[]`
 
 Config plugins
 
-```js
-module.exports = {
+```js title="shuvi.config.js"
+import { createCorePlugin, defineConfig } from 'shuvi'
+
+const corePlugin = createCorePlugin({
+  afterInit: () => {
+    // do something
+  }
+})
+
+export default defineConfig({
   plugins: [
-    // npm 依赖
-    'plugin',
-    // 相对路径
-    './plugin',
-    // 绝对路径
-    `${__dirname}/plugin.js`,
-    // 配置选项
-    ['plugin', { optionA: 'valueA' }],
-    // inline plugin
-    api => {
-      // do something with api
-    }
-  ],
-};
+    'src/path/to/some/plugin'
+    'some-plugin-package-name',
+    ['plugin-with-options', { hello: 'world' }],
+    corePlugin
+  ]
+}),
 ```
 
 todo: need to update
@@ -102,6 +107,7 @@ Set runtime variables which can be read on both server-side and client-side.
 export default {
   runtimeConfig: {
     staticFolder: '/static',
+    SOME_VALUE: process.env.SOME_VALUE
   }
 }
 ```
