@@ -70,6 +70,12 @@ const config = {
           },
           {
             type: 'doc',
+            docId: 'api-reference/overview',
+            position: 'right',
+            label: 'API Reference',
+          },
+          {
+            type: 'doc',
             docId: 'api/overview',
             position: 'right',
             label: 'API',
