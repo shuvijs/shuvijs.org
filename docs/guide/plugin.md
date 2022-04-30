@@ -202,7 +202,7 @@ CorePlugin and serverPlugin is needed to be commonjs modules as they will be exe
 If plugin options are set, they will be passed into every plugin generator and get the actual plugin instance. But runtimePlugins runs on client side so that options must be serializable variable.
 :::
 
-For more detailed plugin api, please refer to [api/plugin](../../api-reference/plugin/hook-api.md).
+For more detailed plugin api, please refer to [api/plugin](../api-reference/plugin/hook-api.md).
 
 ## Configure plugins
 As long as plugin is ready, those plugins could be configured at `shuvi.config.js`.
@@ -226,5 +226,5 @@ export default {
 }
 ```
 
-For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../../api-reference/config.md#plugins).
+For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../api-reference/config.md#plugins).
 

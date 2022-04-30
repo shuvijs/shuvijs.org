@@ -103,11 +103,11 @@ const config = {
               },
               {
                 label: 'Guide',
-                to: 'docs/guide/overview',
+                to: 'docs/guide/Basic Support',
               },
               {
                 label: 'API Reference',
-                to: 'docs/api/overview',
+                to: 'docs/api-reference/overview',
               },
             ],
           },

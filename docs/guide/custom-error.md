@@ -3,9 +3,9 @@ sidebar_position: 83
 id: Custom Error
 ---
 
-If an error occurred, shuvi render error page. In [SSR mode](./getInitialProps.md#isomorph-render), response.statusCode will be set when server render HTML.
+If an error occurred, shuvi render error page. In [SSR mode](./Routes/introduction.md#isomorph-render), response.statusCode will be set when server render HTML.
 
-> error page is not part of route, [getInitialProps](./getInitialProps.md#what-does-getinitialprops-ability) is invalid.
+> error page is not part of route, [getInitialProps](./Routes/introduction.md#what-does-getinitialprops-ability) is invalid.
 
 ## Default Error Message
 

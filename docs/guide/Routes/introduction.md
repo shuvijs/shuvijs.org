@@ -73,7 +73,7 @@ It then returns `JSON` that contains the result of running `getInitialProps`, th
   
 - throw error if necessary 
   
-  If an error is thrown inside `getInitialProps`, it will show the `pages/500.js` file and status code will be 500. Check out the documentation for [500 page](./custom-error.md#500-page) to learn more on how to create it.
+  If an error is thrown inside `getInitialProps`, it will show the `pages/500.js` file and status code will be 500. Check out the documentation for [500 page](../custom-error.md#500-page) to learn more on how to create it.
   ```javascript
   function errPage({ position }) {
       return <div id="ctx-error">Ctx.error Page Render: {position}</div>;
