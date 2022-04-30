@@ -46,7 +46,7 @@ const apiHandler: RuntimeServer.IApiRequestHandler = function handler(req, res) 
 export default apiHandler
 ```
 
-> Details of `RuntimeServer.IApiRequestHandler` types is [here](../../api/runtime/modules/RuntimeServer.md#iapirequesthandler)
+> Details of `RuntimeServer.IApiRequestHandler` types is [here](../api/runtime/modules/RuntimeServer.md#iapirequesthandler)
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
