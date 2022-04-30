@@ -23,7 +23,7 @@ npm init -y
 Install shuvi
 
 ```sh
-npm i shuvi@last
+npm i shuvi
 ```
 
 Create `src/pages` directory, then generate a page with `hello, world`:

@@ -252,7 +252,30 @@ Set true to enable Webpack Bundle Analyzer.
 
 Enable series of expermental features.
 
+## apiConfig
+
+```ts
+export interface IApiConfig {
+  prefix?: string;
+  /**
+   * The byte limit of the body. This is the number of bytes or any string
+   * format supported by `bytes`, for example `1000`, `'500kb'` or `'3mb'`
+   * default is 1mb.
+   */
+  bodyParser?: { sizeLimit: number | string } | boolean;
+}
+```
+default apiConfig
+```ts
+apiConfig: {
+    prefix: '/api',
+    bodyParser: true
+  },
+```
+
+set common config of [apiRoutes](../guide/api-routes.md#custom-config).
+
 ### experimental.parcelCss
 - type: `Boolean`
   
-Set true to use parcel-css-loader
+Set true and then use rust-based compiler [@parcel/css](https://github.com/parcel-bundler/parcel-css) to compile and minifier css content. 

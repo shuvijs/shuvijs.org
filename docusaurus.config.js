@@ -64,7 +64,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'guide/overview',
+            docId: 'guide/Basic Support',
             position: 'right',
             label: 'Guide',
           },
@@ -76,7 +76,7 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'api/overview',
+            docId: 'api/runtime/overview',
             position: 'right',
             label: 'API',
           },
