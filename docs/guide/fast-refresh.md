@@ -1,5 +1,5 @@
 ---
-sidebar_position: 04
+sidebar_position: 20
 id: Fast Refresh
 ---
 

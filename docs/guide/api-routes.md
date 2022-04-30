@@ -1,5 +1,5 @@
 ---
-sidebar_position: 20
+sidebar_position: 05
 id: Api Routes
 ---
 
@@ -9,9 +9,7 @@ API routes provide a solution to build your **API** with shuvi.
 
 Any file inside the folder `src/apis`, each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
 
-```tip
-route prefix can be defined in `shuviConfig` `apiConfig.prefix`, default string`'api'`
-```
+> route prefix can be defined in [`shuvi.config`](../api-reference/config.md#apiconfig) `apiConfig.prefix`, default string`'api'`
 
 | path                           | route                        | matched url                                  |
 | ------------------------------ | ---------------------------- | -------------------------------------------- |
@@ -36,15 +34,19 @@ For an API route to work, you need to export a function as default (a.k.a **requ
 
 To handle different HTTP methods in an API route, you can use `req.method` in your request handler, like so:
 
-```js
-export default function handler(req, res) {
+```ts
+import { RuntimeServer } from '@shuvi/runtime'
+const apiHandler: RuntimeServer.IApiRequestHandler = function handler(req, res) {
   if (req.method === 'POST') {
     // Process a POST request
   } else {
     // Handle any other HTTP method
   }
 }
+export default apiHandler
 ```
+
+> Details of `RuntimeServer.IApiRequestHandler` types is [here](../../api/runtime/modules/RuntimeServer.md#iapirequesthandler)
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
@@ -58,6 +60,8 @@ API routes provide built in middlewares which parse the incoming request (`req`)
 
 ### Custom config
 
+The `apiConfig` object includes all configs available for API routes.
+
 Every API route can export a `config` object to change the default configs, which are the following:
 
 ```js
@@ -69,8 +73,6 @@ export const config = {
   },
 }
 ```
-
-The `api` object includes all configs available for API routes.
 
 `bodyParser` Enables body parsing, you can disable it if you want to consume it as a `Stream`:
 

@@ -1,5 +1,5 @@
 ---
-sidebar_position: 02
+sidebar_position: 03
 id: Dynamic Routes
 ---
 
@@ -91,4 +91,4 @@ files under `src/pages`, file path `pages/*/*.js`
 | pages/post/[...pid].js         | /post/:pid+              | /post/1/2, /post/a/b/c                   |
 | pages/post/[[...pid]].js       | /post/:pid*              | /post, /post/1/2, /post/a/b/c            |
 
-> [details about matched rules](../router-match-rules)
+> [details about matched rules](./router-match-rules)

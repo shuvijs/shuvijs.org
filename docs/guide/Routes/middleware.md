@@ -20,11 +20,12 @@ Middleware is created by using a `middleware` function that lives inside a `_mid
 
 import { RuntimeServer } from '@shuvi/runtime'
 
-export function middleware(req, res, next) {
+export middleware: RuntimeServer.IRequestHandlerWithNext = function (req, res, next) {
   console.log('req.url :', req.url);
   return next();
 }
 ```
+> Details of `RuntimeServer.IRequestHandlerWithNext` types is [here](../../api/runtime/modules/RuntimeServer.md#irequesthandlerwithnext)
 
 ## Execution Order
 

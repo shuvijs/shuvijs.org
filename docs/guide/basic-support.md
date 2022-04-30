@@ -46,9 +46,7 @@ In addition to [ES6 features](https://github.com/lukehoban/es6features), also su
 
 ## Typescript Support
 
-shuvi has built-in TypeScript support. shuvi provide types both runtime and plugins.
-
-- [ ] link runtime and plugins type, https://nextjs.org/docs/basic-features/typescript
+shuvi has built-in [TypeScript support](../api/runtime/overview.md). shuvi provide types both runtime and plugins.
    
 ## CSS Support
 
@@ -373,6 +371,10 @@ export default () => (
   </div>
 );
 ```
+
+## http-proxy
+
+Quick proxy requests by [shuvi.config](../api-reference/config.md#proxy)
 
 ## Serving Static Files
 
