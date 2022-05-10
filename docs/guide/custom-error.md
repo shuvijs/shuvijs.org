@@ -29,6 +29,8 @@ function error({ errorCode, errorDesc }) {
 }
 ```
 
+> `errorCode, errorDesc` type is [here](../api/runtime/interfaces/IPageError.md)
+
 ## Custom Error Page
 
 To create a custom error page you can create a `src/error.js` file.
