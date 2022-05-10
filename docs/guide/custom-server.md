@@ -46,4 +46,7 @@ export const middlewares = [
 ];
 ```
 
+> `renderToHTML` types is [here](../api/runtime/modules/RouterView.md#irendertohtml) 
+> `middlewares` types is [here](../api/runtime/modules/RouterView.md#imiddlewareroutes) 
+
 > `getPageData`, `modifyHtml`,`renderToHTML` only work on SSR mode. middlewares add to server with order by Array order.

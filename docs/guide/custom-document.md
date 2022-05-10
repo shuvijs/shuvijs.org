@@ -3,7 +3,7 @@ sidebar_position: 82
 id: Custom Document
 ---
 
-shuvi generate HTML by [ejs engine](https://ejs.co/).
+shuvi generate HTML by [ejs engine](https://ejs.co/). It works both `spa` and `ssr` mode.
 
 ```template
 // default template
@@ -23,7 +23,7 @@ Intervention HTML with handle `documentProps`, Keyof `documentProps` is `htmlAtt
 
 handle `documentProps` in function `onDocumentProps` and `modifyHtml`.
 
-> 
+> Detail type of `onDocumentProps` is [here](../api/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
 
 ## How to Custom Document
 
@@ -53,7 +53,8 @@ export function getTemplateData() {
   return { test: 1 }; // inject data to ejs template
 }
 
-export function onDocumentProps(documentProps) {
+export function onDocumentProps(documentProps, context) {
+  console.log('context: ', context);
   documentProps.headTags.push({ // modify documentProps 
     tagName: "meta",
     attrs: {
