@@ -211,7 +211,7 @@ const getApp = App => () =>
 export default getApp;
 ```
 
-> The Store key which start with `$` only can be got on server-side.
+> Users could have `publicRuntimeConfig` and `runtimeConfig` configs. The keys in the `runtimeConfig` only available on the server side
 
 ## Dotenv
 
@@ -378,18 +378,34 @@ Quick proxy requests by [shuvi.config](../api-reference/config.md#proxy)
 
 ## Serving Static Files
 
-To serve static files such as images, CSS files, and JavaScript files, All files under the `/public` will be static resources for visit
-   
-   ```javascript
-   // /public/user.json
-   {
-      "name": "foo"
-   }
-   ```
-   visit url: `/_shuvi/user.json`
+### Static Files under `public` before built
 
-> `_shuvi` is publicPath, `user.json` is relative path to `/public`
+Shuvi can serve static files like images, CSS files, or JavaScript files, under the `/public` folder. Files inside the folder will be treated as static resources which could be accessed by the prefix `/`.
 
+example:
+> Access the image `public/icon.png` by following code.
+```js title="src/pages/index.js"
+function HomePage() {
+  return (
+    <img
+      src="/icon.png" alt="icon" width="20" height="30"
+    />
+  )
+}
+export default HomePage;
+```
+
+### Static Files Generated at the Build Time
+`publicPath` serves static files generated after project has built, `_shuvi` has set by default.
+> Access the json file `cities.json` by typing **[ip]:[port]/cities.json** directly on the browser's address bar.
+```json title="dist/client/city.json"
+// a list of cities generated at the built time
+{
+  "key1": "city1",
+  "key2": "city2",
+  // ...
+}
+```
 
 ## Change Public Path
 

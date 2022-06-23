@@ -38,9 +38,13 @@ Specify output directory of the bundled files.
 - Type: `string`
 - Default: `'/_shuvi'`
 
-
 Config publicPath of assets. This option is an equivalent of `output.publicPath` in Webpack.
 
+```js title="shuvi.config.js"
+export default {
+  publicPath: 'myPath'   
+}
+```
 
 ## plugins
 
@@ -101,13 +105,18 @@ export default {
 
 ## runtimeConfig
 
-Set runtime variables which can be read on both server-side and client-side.
+Set runtime variables which can be read on both server-side and client-side. Add the `publicRuntimeConfig` and `runtimeConfig` configs:
 
 ```js title="shuvi.config.js"
 export default {
-  runtimeConfig: {
+  // Will be available on both server-side and client-side
+  publicRuntimeConfig: {
     staticFolder: '/static',
     SOME_VALUE: process.env.SOME_VALUE
+  },
+  // Will be available server-side only
+  runtimeConfig: {
+    secretVariable: 'secret variable' 
   }
 }
 ```
@@ -116,9 +125,12 @@ These runtimeConfig could be read via:
 ```js
 import { getRuntimeConfig } from '@shuvi/app'
 
-const { staticFolder } = getRuntimeConfig()
+const { staticFolder, secretVariable } = getRuntimeConfig()
 // Will be available on both server-side and client-side
 console.log(staticFolder)
+
+// Will be available on server-side only
+console.log(secretVariable)
 
 export default function MyImage() {
   return (
