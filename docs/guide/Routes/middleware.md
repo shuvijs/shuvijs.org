@@ -9,14 +9,14 @@ Based on the user's incoming request, you can modify the response by rewriting, 
 
 ## Usage
 
-Middleware is created by using a `middleware` function that lives inside a `_middleware` file.
+Middleware is created by using a `middleware` function that lives inside a `middleware.js` file.
 
-1. Create a `_middleware.ts` file under your `/pages` directory.
+1. Create a `middleware.ts` file under your `routes` directory.
 
-1. Finally, export a middleware function from the `_middleware.ts` file.
+1. Finally, export a middleware function from the `middleware.ts` file.
 
 ```jsx
-// pages/_middleware.ts
+// routes/middleware.ts
 
 import { RuntimeServer } from '@shuvi/runtime'
 
@@ -29,27 +29,30 @@ export middleware: RuntimeServer.IRequestHandlerWithNext = function (req, res, n
 
 ## Execution Order
 
-If your Middleware is created in `/pages/_middleware.ts`, it will run on all routes within the `/pages` directory. The below example assumes you have `about.tsx` and `teams.tsx` routes.
+If your Middleware is created in `/src/routes/middleware.ts`, it will run on all routes within the `routes` directory. The below example assumes you have `routes/about/page.tsx` and `routes/teams/page.tsx` routes.
 
 ```bash
 - package.json
-- /pages
-    _middleware.ts # Will run on all routes under /pages
-    index.tsx
-    about.tsx
-    teams.tsx
+- /routes
+    middleware.ts # Will run on all routes under /routes
+    page.tsx
+    about
+      page.tsx
+    teams
+      page.tsx
 ```
 
-If you _do_ have sub-directories with nested routes, middleware will run from the top down. For example, if you have `/pages/about/_middleware.ts` and `/pages/about/team/_middleware.ts`, `/about` will run first and then `/about/team`. The below example show how this works with a nested routing structure.
+If you _do_ have sub-directories with nested routes, middleware will run from the top down. For example, if you have `routes/about/middleware.ts` and `routes/about/team/middleware.ts`, `/about` will run first and then `/about/team`. The below example show how this works with a nested routing structure.
 
 ```bash
 - package.json
-- /pages
-    index.tsx
+- /routes
+    page.tsx
     - /about
-      _middleware.ts # Will run first
-      about.tsx
+      middleware.ts # Will run first
+      about
+        page.tsx
       - /teams
-        _middleware.ts # Will run second
-        teams.tsx
+          middleware.ts # Will run second
+          page.tsx
 ```

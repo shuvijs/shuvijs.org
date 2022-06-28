@@ -5,7 +5,7 @@ id: Dynamic Routes
 
 Defining routes by using predefined paths is not always enough for complex applications. In shuvi you can add brackets to a page (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
 
-Consider the following page `pages/post/[pid].js`:
+Consider the following page `routes/post/[pid]/page.js`:
 
 ```jsx
 import { useCurrentRoute } from '@shuvi/app'
@@ -20,7 +20,7 @@ const Post = () => {
 export default Post
 ```
 
-Any route like `/post/1`, `/post/abc`, etc. will be matched by `pages/post/[pid].js`. 
+Any route like `/post/1`, `/post/abc`, etc. will be matched by `routes/post/[pid]/page.js`.
 
 For example, the route `/post/abc` will have the following `params` object:
 
@@ -37,7 +37,7 @@ Similarly, the route `/post/abc?foo=bar` will have the following `params` and `q
 { "foo": "bar" }
 ```
 
-Multiple dynamic route segments work the same way. The page `pages/post/[pid]/[comment].js` will match the route `/post/abc/a-comment` and its `params` object will be:
+Multiple dynamic route segments work the same way. The page `routes/post/[pid]/[comment]/page.js` will match the route `/post/abc/a-comment` and its `params` object will be:
 
 ```json
 { "pid": "abc", "comment": "a-comment" }
@@ -47,7 +47,7 @@ Multiple dynamic route segments work the same way. The page `pages/post/[pid]/[c
 
 Dynamic routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:
 
-- `pages/post/[...slug].js` matches `/post/a`, but also `/post/a/b`, `/post/a/b/c` and so on.
+- `routes/post/[...slug].js` matches `/post/a`, but also `/post/a/b`, `/post/a/b/c` and so on.
 
 > **Note**: You can use names other than `slug`, such as: `[...param]`
 
@@ -67,7 +67,7 @@ And in the case of `/post/a/b`, and any other matching path, new parameters will
 
 Catch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`).
 
-For example, `pages/post/[[...slug]].js` will match `/post`, `/post/a`, `/post/a/b`, and so on.
+For example, `routes/post/[[...slug]]/page.js` will match `/post`, `/post/a`, `/post/a/b`, and so on.
 
 The main difference between catch all and optional catch all routes is that with optional, the route without the parameter is also matched (`/post` in the example above).
 
@@ -81,14 +81,15 @@ The `params` objects are as follows:
 
 ## general rules
 
-files under `src/pages`, file path `pages/*/*.js`
+files under `src/routes`, file path `routes/*/*.js`
 
-| path                           | route                    | matched url                              |
-| ------------------------------ | ------------------------ | ---------------------------------------- |
-| pages/post/create.js           | /post/create             | /post/create                             |
-| pages/post/[pid].js            | /post/:pid               | /post/1, /post/abc                       |
-| pages/post/[[pid]].js          | /post/:pid?              | /post, /post/1, /post/abc                |
-| pages/post/[...pid].js         | /post/:pid+              | /post/1/2, /post/a/b/c                   |
-| pages/post/[[...pid]].js       | /post/:pid*              | /post, /post/1/2, /post/a/b/c            |
+| path                          | route                    | matched url                              |
+|-------------------------------| ------------------------ | ---------------------------------------- |
+| routes/post/create/page.js    | /post/create             | /post/create                             |
+| routes/post/[pid]/page.js      | /post/:pid               | /post/1, /post/abc                       |
+| routes/post/[[pid]]/page.js    | /post/:pid?              | /post, /post/1, /post/abc                |
+| routes/post/[...pid]/page.js   | /post/:pid+              | /post/1/2, /post/a/b/c                   |
+| routes/post/[[...pid]]/page.js | /post/:pid*              | /post, /post/1/2, /post/a/b/c            |
 
 > [details about matched rules](./router-match-rules)
+
