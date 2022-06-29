@@ -1,14 +1,14 @@
 ---
 sidebar_position: 03
-id: layout-routes
+id: layout-route
 ---
 ## Routes
 
-**Layout routes** is a directory structure for convention routing.
+**Layout route** is a directory structure for convention routing.
 Which produces the corresponding `React` routing hierarchy.
-Read from **src/routes** directory.
+Read from **src/routes** directory. 
 
-**Page route** is divided into two types: **layout** and **page**.
+**Layout route** is divided into two types: **layout** and **page**.
 Which correspond to page.js and layout.js respectively. 
 The extension can also be replaced with `.ts`, `.jsx`, and `.tsx` . 
 `page` or `layout` should export a `react component` by default.
@@ -72,7 +72,7 @@ To match a dynamic segment, you can use the bracket syntax. This allows you to m
 ## Layout
 
 Layout is suitable for scenarios that require nested routing.
-Similar to the slot of Vue.js.
+Similar to the `<router-view>` of `Vue-router`.
 
 Layout can be understood as a more advanced page, it has all the capabilities of page, 
 and has the ability to share areas without repeated rendering and scheduling of sub-routes.
