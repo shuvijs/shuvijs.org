@@ -1,9 +1,9 @@
 ---
-sidebar_position: 04
+sidebar_position: 03
 id: Middleware
 ---
 
-Middleware enables you to use code over configuration. This gives you full flexibility in shuvi, because you can run code before a request is completed. 
+Middleware enables you to use code over configuration. This gives you full flexibility in shuvi, because you can run code before a request is completed.
 
 Based on the user's incoming request, you can modify the response by rewriting, redirecting, adding headers.
 
