@@ -285,7 +285,7 @@ apiConfig: {
   },
 ```
 
-set common config of [apiRoutes](../guide/api-routes.md#custom-config).
+set common config of [apiRoutes](../guide/Conventional-Routes/api-routes.md#custom-config).
 
 ### experimental.parcelCss
 - type: `Boolean`
