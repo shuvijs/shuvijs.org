@@ -1,25 +1,33 @@
 ---
-sidebar_position: 05
+sidebar_position: 02
 id: Api Routes
 ---
 
 ## API Routes
 
+
 API routes provide a solution to build your **API** with shuvi.
 
-Any file inside the folder `src/apis`, each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
+Any file inside the folder `src/routes`, each api is associated with a route based on its file name. They are server-side only bundles and won't increase your client-side bundle size.
 
-> route prefix can be defined in [`shuvi.config`](../api-reference/config.md#apiconfig) `apiConfig.prefix`, default string`'api'`
 
-| path                           | route                        | matched url                                  |
-| ------------------------------ | ---------------------------- | -------------------------------------------- |
-| apis/post/create.js            | /api/post/create             | /api/post/create                             |
-| apis/post/[pid].js             | /api/post/:pid               | /api/post/1, /api/post/abc                   |
-| apis/post/[[pid]].js           | /api/post/:pid?              | /api/post, /api/post/1, /api/post/abc        |
-| apis/post/[...pid].js          | /api/post/:pid+              | /api/post/1/2, /api/post/a/b/c               |
-| apis/post/[[...pid]].js        | /api/post/:pid*              | /api/post, /api/post/1/2, /api/post/a/b/c    |
+| path                              | route            | matched url                               |
+|-----------------------------------|------------------|-------------------------------------------|
+| routes/api/post/create/api.js     | /api/post/create | /api/post/create                          |
+| routes/api/post/[pid]/api.js      | /api/post/:pid   | /api/post/1, /api/post/abc                |
+| routes/api/post/[[pid]]/api.js    | /api/post/:pid?  | /api/post, /api/post/1, /api/post/abc     |
+| routes/api/post/[...pid]/api.js   | /api/post/:pid+  | /api/post/1/2, /api/post/a/b/c            |
+| routes/api/post/[[...pid]]/api.js | /api/post/:pid*  | /api/post, /api/post/1/2, /api/post/a/b/c |
 
-For example, the following API route `pages/api/user.js` returns a `json` response with a status code of `200`:
+
+### Usage
+
+1. Create a `api.js` file under your `routes` directory.
+2. Finally, export an api function from the `api.js` file by default.
+
+### Example
+
+For example, the following API route `routes/api/user/api.js` returns a `json` response with a status code of `200`:
 
 ```js
 export default function handler(req, res) {
@@ -46,7 +54,7 @@ const apiHandler: RuntimeServer.IApiRequestHandler = function handler(req, res) 
 export default apiHandler
 ```
 
-> Details of `RuntimeServer.IApiRequestHandler` types is [here](../api/runtime/modules/RuntimeServer.md#iapirequesthandler)
+> Details of `RuntimeServer.IApiRequestHandler` types is [here](../../api/runtime/modules/RuntimeServer.md#iapirequesthandler)
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
@@ -112,3 +120,5 @@ The included helpers are:
 - `res.json(body)` - Sends a JSON response. `body` must be a [serialiazable object](https://developer.mozilla.org/en-US/docs/Glossary/Serialization)
 - `res.send(body)` - Sends the HTTP response. `body` can be a `string`, an `object` or a `Buffer`
 - `res.redirect([status,] path)` - Redirects to a specified path or URL. `status` must be a valid [HTTP status code](https://en.wikipedia.org/wiki/List_of_HTTP_status_codes). If not specified, `status` defaults to "307" "Temporary redirect".
+
+> Notice: api.js and page.js are conflicting, when both exist, only page.js will be enabled.
