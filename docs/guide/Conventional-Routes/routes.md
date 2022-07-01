@@ -8,87 +8,34 @@ id: Routes
 Shuvi provides a file system-based convention routing rule.
 Read the agreed files from **src/routes** in the project root directory, 
 such as page.js, **`layout.js`**, **`api.js`**, **`middleware.js`**. 
-The extension of the routing file is not limited to **`.js`**, but can also be **`.ts`**, **`.tsx`**, and **`.jsx`**.
 Which produces the corresponding **`React Component`** routing hierarchy.
 
-> Note that all future examples will use the .js extension.
+
 
 ## File structure
 
-There are three route types of **`routing system`**, page.js, and layout.js.
-**`directories`** and **`files`** under src/routes determine the rules for generating paths.
-
+The names of the directories under src/routes determine the rules for generating routes
 
 **Example**:
 
-| file path                   | route path |
-|-----------------------------|------------|
-| src/routes/**page.js**      | /          |
-| src/routes/**a/page.js**    | /a         |
-| src/routes/**a/a1/page.js** | /a/a1      |
-| src/routes/**b/layout.js**  | /b         |
-| src/routes/**b/page.js**    | /b         |
-| src/routes/**b/b1/page.js** | /b/b1      |
-| src/routes/**b/b2/page.js** | /b/b2      |
-| src/routes/**c/d/page.js**  | /c/d       |
-
-> You should see layout.js, We'll talk about it later.
-
-
-## Page
-
-
-### Usage
-
-page is leaf node in the routing tree，should export a **`React component`** by default.
-Can be nested in any folder.
-
-1. Create a `page.js` file under your `routes` directory.
-2. Finally, export a React component function from the `page.js` file by default.
-
-
-### Example
-
-`/` → `src/routes/page.js`:
-
-```jsx
-//src/routes/page.js
-export default function Index() {
-  return <div>index</div>
-}
-```
-
-`/a/b` → `src/routes/a/b/page.js`:
-
-```jsx
-//src/routes/a/b/page.js
-export default function Index() {
-  return <div>a-b</div>
-}
-```
-
-
+| directory path  | route path |
+|-----------------|------------|
+| src/routes/     | /          |
+| src/routes/a    | /a         |
+| src/routes/a/a1 | /a/a1      |
+| src/routes/b    | /b         |
+| src/routes/b/b1 | /b/b1      |
+| src/routes/b/b2 | /b/b2      |
 
 ## Dynamic Segments
 
-Defining routes by using predefined paths is not always enough for complex applications. In shuvi you can add brackets to a page (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
+Defining routes by using predefined paths is not always enough for complex applications. 
+In shuvi you can add brackets to a directory name (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
 
-Consider the following page `routes/post/[pid]/page.js`:
+Consider the following directory `routes/post/[pid]`:
 
-```jsx
-import { useCurrentRoute } from '@shuvi/app'
+Any route like `/post/1`, `/post/abc`, etc. will be matched by `routes/post/[pid]`.
 
-const Post = () => {
-  const { params } = useCurrentRoute()
-  const { pid } = params;
-
-  return <p>Post: {pid}</p>
-}
-
-export default Post
-```
-
-Any route like `/post/1`, `/post/abc`, etc. will be matched by `routes/post/[pid]/page.js`.
 
 For example, the route `/post/abc` will have the following `params` object:
 
@@ -105,17 +52,18 @@ Similarly, the route `/post/abc?foo=bar` will have the following `params` and `q
 { "foo": "bar" }
 ```
 
-Multiple dynamic route segments work the same way. The page `routes/post/[pid]/[comment]/page.js` will match the route `/post/abc/a-comment` and its `params` object will be:
+Multiple dynamic route segments work the same way. The page `routes/post/[pid]/[comment]` will match the route `/post/abc/a-comment` and its `params` object will be:
 
 ```json
 { "pid": "abc", "comment": "a-comment" }
 ```
 
+
 ### Catch all routes
 
 Dynamic routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:
 
-- `routes/post/[...slug].js` matches `/post/a`, but also `/post/a/b`, `/post/a/b/c` and so on.
+- `routes/post/[...slug]` matches `/post/a`, but also `/post/a/b`, `/post/a/b/c` and so on.
 
 > **Note**: You can use names other than `slug`, such as: `[...param]`
 
@@ -135,7 +83,7 @@ And in the case of `/post/a/b`, and any other matching path, new parameters will
 
 Catch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`).
 
-For example, `routes/post/[[...slug]]/page.js` will match `/post`, `/post/a`, `/post/a/b`, and so on.
+For example, `routes/post/[[...slug]]` will match `/post`, `/post/a`, `/post/a/b`, and so on.
 
 The main difference between catch all and optional catch all routes is that with optional, the route without the parameter is also matched (`/post` in the example above).
 
@@ -147,21 +95,50 @@ The `params` objects are as follows:
 { "slug": ["a", "b"] } // `GET /post/a/b` (multi-element array)
 ```
 
-## general rules
+### general rules
 
-files under `src/routes`, file path `routes/*/*.js`
 
-| path                           | route        | matched url                   |
-|--------------------------------|--------------|-------------------------------|
-| routes/post/create/page.js     | /post/create | /post/create                  |
-| routes/post/[pid]/page.js      | /post/:pid   | /post/1, /post/abc            |
-| routes/post/[[pid]]/page.js    | /post/:pid?  | /post, /post/1, /post/abc     |
-| routes/post/[...pid]/page.js   | /post/:pid+  | /post/1/2, /post/a/b/c        |
-| routes/post/[[...pid]]/page.js | /post/:pid*  | /post, /post/1/2, /post/a/b/c |
+| path                   | route        | matched url                   |
+|------------------------|--------------|-------------------------------|
+| routes/post/create     | /post/create | /post/create                  |
+| routes/post/[pid]      | /post/:pid   | /post/1, /post/abc            |
+| routes/post/[[pid]]    | /post/:pid?  | /post, /post/1, /post/abc     |
+| routes/post/[...pid]   | /post/:pid+  | /post/1/2, /post/a/b/c        |
+| routes/post/[[...pid]] | /post/:pid*  | /post, /post/1/2, /post/a/b/c |
 
 > [details about matched rules](router-match-rules)
 
 
+## Page
+
+The directory name determines the path, page.js determines the rendered content.
+`page.js` should export a **`React component`** by default.page.js is leaf node in the routing tree，
+Can be nested in any folder.
+
+> Note that all future examples will use the .js extension.
+> The extension of the routing file is not limited to **`.js`**, but can also be **`.ts`**, **`.tsx`**, and **`.jsx`**.
+
+
+### Usage
+
+1. Create a `page.js` file under your `routes` directory.
+2. Finally, export a React component function from the `page.js` file by default.
+
+
+### Example
+
+
+```jsx
+export default function Index() {
+  return <div>index</div>
+}
+```
+
+```jsx
+export default function Index() {
+  return <div>a-b</div>
+}
+```
 
 ## Layout
 
