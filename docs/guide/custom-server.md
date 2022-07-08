@@ -5,48 +5,43 @@ id: Custom Server
 
 ## How to Custom Document
 
-To create a custom error page you can create a `src/server.js` file. `export` with `getPageData`, `modifyHtml`,`renderToHTML` and `middlewares`, all that methods ***only work in server side***.
+To create a custom error page you can create a `src/server.js` file. `export` with `getPageData`, `modifyHtml`,`renderToHTML` and `middlewares`, all that methods **_only work in server side_**.
 
-  - `getPageData` add extra data to application. 
-  - `modifyHtml` modify document props.
-  - `renderToHTML` last chance to modify rendered html before it be sended to browser.
-  - `middlewares` allow add custom middlewares to server for handler request and response.
+- `middlewares` allow add custom middlewares to server for handler request and response.
+- `getPageData` add extra data to application.
+- `modifyHtml` modify document props.
+- `renderToHTML` last chance to modify rendered html before it be sended to browser.
 
 ```javascript
 // src/server.js
+export const middlewares = [
+  { path: "/health-check:other(.*)", handler: setCookie },
+  { path: "/users/:id", handler: user },
+  { path: "/profile/:id/setting:other(.*)", handler: setting },
+];
+
 export const getPageData = () => {
   return {
-    foo: 'bar'
+    foo: "bar",
   };
 };
 
-export const modifyHtml = (documentProps, appContext, context) => {
-  documentProps.headTags.push({
-    tagName: 'meta',
-    attrs: {
-      name: 'testDocumentProps'
-    }
-  });
-  return documentProps;
-};
-
-export const renderToHTML = (renderToHTML, context) => {
+export const handlePageRequest = (originalHandlePageRequest, appContext) => {
   return async (req, res) => {
-    const html = await renderToHTML(req, res);
-    console.log('custom-renderToHTML', html);
-    return html;
+    if (req.query.error) {
+      res.status(500).end();
+    } else {
+      await originalHandlePageRequest(req, res);
+    }
   };
 };
 
-
-export const middlewares = [
-  { path: '/health-check:other(.*)', handler: setCookie },
-  { path: '/users/:id', handler: user },
-  { path: '/profile/:id/setting:other(.*)', handler: setting },
-];
+export const modifyHtml = (documentProps, appContext) => {
+  documentProps.headTags.push({
+    tagName: "meta",
+    attrs: {
+      name: "testDocumentProps",
+    },
+  });
+};
 ```
-
-> `renderToHTML` types is [here](../api/runtime/modules/RouterView.md#irendertohtml) 
-> `middlewares` types is [here](../api/runtime/modules/RouterView.md#imiddlewareroutes) 
-
-> `getPageData`, `modifyHtml`,`renderToHTML` only work on SSR mode. middlewares add to server with order by Array order.
