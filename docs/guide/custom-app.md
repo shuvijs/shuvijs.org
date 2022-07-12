@@ -1,104 +1,108 @@
 ---
-sidebar_position: 80
-id: Custom App
+sidebar_position: 81
+id: Custom Runtime
 ---
 
-## What App it is?
+Create a `src/app.js` file to intervene shuvi app.
 
-The component `<App />` is the dynamic component what routes matched. It just run once on application mount if there is no error. The `App.getInitialProps` receives a single argument called `context`. It's an object with the same set of properties as the context object in `getInitialProps`.
 
-There is two route components `index.js` and `about.js`;
+## init
 
-```javascript
-// src/pages/index.js
-export default function Index() {
-  return <div id="index">Index Page</div>;
+run on initialization
+
+**example:**
+
+```js
+export const init = () => {
+  console.log('init');
 };
 ```
 
-```javascript
-// src/pages/about.js
-export default function About() {
-  return  <div id="about">About Page</div>;
-};
-```
+## appContext
 
-- visit `/`, `<App />` point `index.js`, render `index.js`.
-  
-- visit `/about`, `<App />` point `about.js`, render `about.js`.
+'ac' for data from mixin `ctx.appContext`, fired after `init`.
 
-## How To Custom App
+**example**:
 
-There is way to override `<App />`, add `src/app.js` or `src/app.ts`, `export default` HOC of `<App />`.
-
-- The example below show add a listener to router.
-  
-  ```js
-  // src/app.js
-  import React from 'react';
-  import { useRouter } from '@shuvi/runtime';
-  const getApp = App => {
-    const MyApp = () => {
-      const router = useRouter();
-
-      React.useEffect(() => {
-        if (typeof window !== 'undefined') {
-          router.listen(() => {
-            console.log('history change');
-          });
-        }
-      }, []);
-
-      return <App />;
-    };
-    return MyApp;
+```js
+export const appContext = ctx => {
+  return {
+    ...ctx,
+    data: 1
   };
+}
+```
 
-  export default getApp;
-  ```
 
-<div id="example-override-getInitialProps"></div>
-- The example below, override method `getInitialProps`.
+## appComponent
 
-  > When you add getInitialProps in your custom app, do not forget to **call `fetchInitialProps` inside `getInitialProps`**.
 
-  ```javascript
-  // src/app.js
-  const getApp = App => {
-    const MyApp = props => (
+'appComponent' is a function that should return a component that is the arrow at the top of the entire application.
+
+**example**:
+
+```javascript
+// src/app.js
+
+export const appComponent = UserApp => {
+  function AppComponent(props) {
+    return (
       <div>
-        <div id="pathname">{props.pathname}</div>
-        <App />
+        <div>This is AppComponent</div>
+        <UserApp {...props} />
       </div>
     );
+  }
+  if (UserApp.getInitialProps)
+    AppComponent.getInitialProps = UserApp.getInitialProps;
+  return AppComponent;
+};
+```
 
-    MyApp.getInitialProps = async ({ fetchInitialProps, appContext }) => {
-      let pathname;
-      if (appContext.req) {
-        pathname = appContext.req.pathname;
-      } else {
-        pathname = window.location.pathname;
-      }
+```javascript
+// src/routes/page.js
+export default function Index(props) {
+  return <div>Index Page: {props.index}</div>;
+}
 
-      await fetchInitialProps();
+```
 
-      return {
-        pathname,
-      };
-    };
-    return MyApp;
-  };
+The **notes** shown layers of HOC in result HTML.
 
-  export default getApp;
-  ```
+```html
+// render result
+<div id="__APP"> // container to render
+  // highlight-next-line
+  // getAppComponent HOC
+  <div>
+    <div>This is AppComponent</div>
+    <div>
+      // highlight-next-line
+      // user custom app
+      <div id="pathname">pathname: /</div>
+      // highlight-next-line
+      // getRootAppComponent HOC
+      <div>
+        <div>This is getRootAppComponent</div>
+        // highlight-next-line
+        // index page
+        <div>Index Page: index props</div>
+      </div>
+    </div>
+    </div>
+  </div>
+</div>
+```
 
-## Why Need To Custom App
 
-- Persisting layout between page changes
-- [Custom Error Boundaries](https://reactjs.org/docs/error-boundaries.html)
-- Inject global state to pages
-- Inject additional common data into pages
-- Add a listener to router
-- [Add global CSS](./basic-support.md#adding-a-global-stylesheet)
+## dispose
 
-> `src/app.js` use HOC warp `<App />` layer by layer, just like a nesting doll. The HOC order is very important sometimes, especially for which HOC should be the closest to `<App />`. A other way to add the closest to `<App />` without care about order is [`src/runtime.js`](./custom-runtime.md).
+Will only run on the server side, when the page request is completed.
+
+**example:**
+
+```js
+export const dispose = () => {
+  console.log('dispose');
+};
+```

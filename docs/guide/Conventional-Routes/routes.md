@@ -90,7 +90,7 @@ The main difference between catch all and optional catch all routes is that with
 The `params` objects are as follows:
 
 ```json lines
-{ } // GET `/post` (empty object)
+{ "slug": [] } // GET `/post` (empty array)
 { "slug": ["a"] } // `GET /post/a` (single-element array)
 { "slug": ["a", "b"] } // `GET /post/a/b` (multi-element array)
 ```
