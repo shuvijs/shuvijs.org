@@ -15,12 +15,12 @@ Middleware is created by using a `middleware` function that lives inside a `midd
 
 1. Finally, export a middleware function from the `middleware.ts` file.
 
-```jsx
+```tsx
 // routes/middleware.ts
 
 import { RuntimeServer } from '@shuvi/runtime'
 
-export middleware: RuntimeServer.IRequestHandlerWithNext = function (req, res, next) {
+export const middleware:RuntimeServer.IRequestHandlerWithNext = function (req, res, next) {
   console.log('req.url :', req.url);
   return next();
 }
@@ -55,4 +55,33 @@ If you _do_ have sub-directories with nested routes, middleware will run from th
       - /teams
           middleware.ts # Will run second
           page.tsx
+```
+
+## Config
+
+You can also define middleware routing in shuvi.config.js.
+
+**example**:
+
+```js
+// shuvi.config.js
+export default {
+  middlewareRoutes: [
+    // start with /a
+    {
+      path: '/a/:rest*',
+      middlewares: ['a/m.js']
+    },
+    // only /a/a1
+    {
+      path: '/a/a1',
+      middlewares: ['a/a1/m.js']
+    },
+    // catch all
+    {
+      path: '/',
+      middlewares: ['m.js']
+    }
+  ]
+};
 ```
