@@ -1,6 +1,6 @@
 ---
 sidebar_position: 81
-id: Custom Runtime
+id: Custom App
 ---
 
 Create a `src/app.js` file to intervene shuvi app.
@@ -20,7 +20,7 @@ export const init = () => {
 
 ## appContext
 
-'ac' for data from mixin `ctx.appContext`, fired after `init`.
+Should return custom ctx data, mixin `ctx.appContext`, fired after `init`.
 
 **example**:
 
