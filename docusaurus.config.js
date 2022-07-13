@@ -11,6 +11,9 @@ const config = {
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/shuvijs.org/',
   onBrokenLinks: 'throw',
+  scripts:[
+    '/shuvijs.org/iconfont.js'
+  ],
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.

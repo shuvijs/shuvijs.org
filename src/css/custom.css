@@ -14,7 +14,7 @@
   --ifm-color-primary-lighter: #359962;
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-link-color: #fff;
-  --ifm-bg-primary:#303846;
+  --ifm-bg-primary: #303846;
   --ifm-code-font-size: 95%;
 }
 
@@ -41,6 +41,17 @@
 }
 
 
+.icon {
+  width: 1em;
+  height: 1em;
+  vertical-align: -0.15em;
+  fill: currentColor;
+  overflow: hidden;
+}
 
+.icon-big {
+  width: 4em;
+  height: 4em;
+}
 
 
