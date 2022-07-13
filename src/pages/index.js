@@ -7,8 +7,8 @@ import clsx from "clsx";
 
 import Highlight, { defaultProps } from 'prism-react-renderer'
 import theme from 'prism-react-renderer/themes/vsDark'
-import { exampleRoute } from "./example-route";
-import { exampleLoader } from "./example-loader";
+import { exampleRoute } from "../example-route";
+import { exampleLoader } from "../example-loader";
 
 const HighlightView = ({code}) => {
   return <Highlight {...defaultProps} theme={theme} code={code} language="jsx">
