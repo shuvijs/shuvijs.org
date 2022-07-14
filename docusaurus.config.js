@@ -7,10 +7,13 @@ const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 /** @type {import('@docusaurus/types').Config} */
 const config = {
   title: 'Shuvi',
-  tagline: 'Meta Framework to create applications quickly',
+  tagline: 'Meta Framework to create applications quickly!',
   url: 'https://your-docusaurus-test-site.com',
   baseUrl: '/shuvijs.org/',
   onBrokenLinks: 'throw',
+  scripts:[
+    '/shuvijs.org/iconfont.js'
+  ],
   onBrokenMarkdownLinks: 'warn',
   favicon: 'img/favicon.ico',
   organizationName: 'facebook', // Usually your GitHub org/user name.
