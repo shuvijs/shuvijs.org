@@ -15,7 +15,7 @@ const HighlightView = ({code}) => {
     {({ className, style, tokens, getLineProps, getTokenProps }) => (
       <pre className={clsx(className,styles.highlight)} style={style}>
         {tokens.map((line, i) => (
-          <div {...getLineProps({ line, key: i })}>
+          <div {...getLineProps({ line, key: i })} key={i.toString()}>
             {line.map((token, key) => (
               <span {...getTokenProps({ token, key })} />
             ))}
@@ -97,7 +97,7 @@ function Home() {
         <div className={clsx(styles.features,"container")}>
           {
             features.map(feature => {
-              return <div className={styles.feature}>
+              return <div className={styles.feature} key={feature.title}>
                 <p className={styles.featureImg}>
                   <svg className="icon icon-big">
                     <use xlinkHref={`#${feature.icon}`} />
