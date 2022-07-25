@@ -61,9 +61,9 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: 'introduction/getting-started',
+            docId: 'Tutorials',
             position: 'right',
-            label: 'Introduction',
+            label: 'Tutorials',
           },
           {
             type: 'doc',
@@ -73,16 +73,11 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'api-reference/overview',
+            docId: 'api-reference/command',
             position: 'right',
             label: 'API Reference',
           },
-          {
-            type: 'doc',
-            docId: 'api/runtime/overview',
-            position: 'right',
-            label: 'API',
-          },
+          
           /* { to: 'docs/introduction', label: 'Start', position: 'right' },
           { to: 'docs/guide', label: 'Docs', position: 'right' },
           { to: 'docs/api', label: 'API', position: 'right' }, */
@@ -110,7 +105,7 @@ const config = {
               },
               {
                 label: 'API Reference',
-                to: 'docs/api-reference/overview',
+                to: 'docs/api-reference/command',
               },
             ],
           },
