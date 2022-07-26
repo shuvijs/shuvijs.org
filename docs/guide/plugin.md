@@ -1,6 +1,7 @@
 ---
 id: plugin
-title: Plugin 
+title: Plugin
+sidebar_position: 05
 ---
 
 ## What is plugin?
@@ -226,5 +227,5 @@ export default {
 }
 ```
 
-For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../api-reference/config.md#plugins).
+For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../api-reference/shuvi-config.md#plugins).
 

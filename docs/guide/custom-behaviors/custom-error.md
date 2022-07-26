@@ -1,5 +1,5 @@
 ---
-sidebar_position: 83
+sidebar_position: 2
 id: Custom Error
 ---
 
@@ -28,7 +28,7 @@ function error({ errorCode, errorDesc }) {
 }
 ```
 
-> `errorCode, errorDesc` type is [here](../api/runtime/interfaces/IPageError.md)
+> `errorCode, errorDesc` type is [here](../../api-reference/runtime/interfaces/IPageError.md)
 
 ## Custom Error Page
 

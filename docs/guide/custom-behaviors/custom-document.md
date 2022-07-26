@@ -1,6 +1,6 @@
 ---
-sidebar_position: 82
-id: Custom Document
+sidebar_position: 3
+id: Custom document
 ---
 
 shuvi generate HTML by [ejs engine](https://ejs.co/). It works both `spa` and `ssr` mode.
@@ -23,7 +23,7 @@ Intervention HTML with handle `documentProps`, Keyof `documentProps` is `htmlAtt
 
 handle `documentProps` in function `onDocumentProps` and `modifyHtml`.
 
-> Detail type of `onDocumentProps` is [here](../api/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
+> Detail type of `onDocumentProps` is [here](../../api-reference/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
 
 ## How to Custom Document
 
@@ -85,4 +85,4 @@ render results:
 
 ## Why Need To Custom Document
 
-  - import some external resources, such as CDN
+- import some external resources, such as CDN

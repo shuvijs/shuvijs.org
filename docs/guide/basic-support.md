@@ -1,5 +1,5 @@
 ---
-sidebar_position: 01
+sidebar_position: 1
 id: Basic Support
 ---
 
@@ -46,7 +46,7 @@ In addition to [ES6 features](https://github.com/lukehoban/es6features), also su
 
 ## Typescript Support
 
-shuvi has built-in [TypeScript support](../api/runtime/overview.md). shuvi provide types both runtime and plugins.
+shuvi has built-in [TypeScript support](../api-reference/runtime/overview.md). shuvi provide types both runtime and plugins.
    
 ## CSS Support
 
@@ -69,7 +69,7 @@ body {
 }
 ```
 
-Create a [`pages/src.js` file](./custom-app.md) if not already present.
+Create a [`pages/src.js` file](./custom-behaviors/custom-app-context.md) if not already present.
 Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file.
 
 ```jsx
@@ -78,7 +78,7 @@ export default (App) => <App />;
 ```
 
 These styles (`styles.css`) will apply to all pages and components in your application.
-Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`src/app.js`](./custom-app.md)**.
+Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`src/app.js`](./custom-behaviors/custom-app-context.md)**.
 
 In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 
@@ -374,7 +374,7 @@ export default () => (
 
 ## http-proxy
 
-Quick proxy requests by [shuvi.config](../api-reference/config.md#proxy)
+Quick proxy requests by [shuvi.config](../api-reference/shuvi-config.md#proxy)
 
 ## Serving Static Files
 

@@ -1,7 +1,7 @@
 ---
-id: config
+id: shuvi-config
 title: shuvi.config.js
-sidebar_position: 4
+sidebar_position: 2
 ---
 
 # Config
@@ -285,7 +285,7 @@ apiConfig: {
   },
 ```
 
-set common config of [apiRoutes](../guide/Conventional-Routes/api-routes.md#custom-config).
+set common config of [apiRoutes](../guide/routes.md#custom-config).
 
 ### experimental.parcelCss
 - type: `Boolean`

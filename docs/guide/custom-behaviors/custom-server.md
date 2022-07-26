@@ -1,6 +1,6 @@
 ---
-sidebar_position: 84
-id: Custom Server
+sidebar_position: 5
+id: Custom server
 ---
 
 ## How to Custom Document

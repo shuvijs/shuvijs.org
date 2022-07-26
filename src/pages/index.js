@@ -88,7 +88,7 @@ function Home() {
       <div className={ styles.header }>
         <h1>{ siteConfig.title }</h1>
         <h2>{ siteConfig.tagline }</h2>
-        <Link className={styles.getStarted} to="/docs/introduction/getting-started">
+        <Link className={styles.getStarted} to="/docs/Tutorials#introduction">
           <span>Get Started</span>
         </Link>
       </div>
@@ -119,7 +119,7 @@ function Home() {
           <div className={styles.heroContent}>
             <h3>Conventional routing system</h3>
             <p>Files are routes, supporting nested layouts, dynamic paths, API and Middleware definitions.</p>
-            <Link to="/docs/guide/Conventional-Routes/Routes" className={styles.heroLink} >
+            <Link to="/docs/guide/routes" className={styles.heroLink} >
               Read More
             </Link>
           </div>
@@ -130,7 +130,7 @@ function Home() {
           <div className={styles.heroContent}>
             <h3>Isomorphism</h3>
             <p>Data automatic dehydration water injection.</p>
-            <Link to="/docs/guide/Conventional-Routes/Routes" className={styles.heroLink} >
+            <Link to="/docs/guide/Data%20Fetching" className={styles.heroLink} >
               Read More
             </Link>
           </div>
