@@ -24,7 +24,7 @@ We will learn the following:
 
 ### System Requirements
 
-- [node ^14.x](https://github.com/nodejs/Release)
+- [node ^16.x](https://github.com/nodejs/Release)
 
 ### Create a project
 
