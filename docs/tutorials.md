@@ -8,7 +8,7 @@ shuvi is a front-end application development solution that integrates modern too
 
 
 
-## Blog
+## Create your first app
 
 We are going to make a simple blog demo through a series of operations.
 
