@@ -85,13 +85,13 @@ Create the `posts-mock-data.js` file in the `src` directory.
 export const postsMockData = [
   {
     id:'1',
-    title:"first-post",
-    content:"first-post-content"
+    title:"First-post",
+    content:"First-post-content"
   },
   {
     id:'2',
-    title:"second-post",
-    content:"second-post-content"
+    title:"Second-post",
+    content:"Second-post-content"
   }
 ]
 ```
@@ -101,24 +101,25 @@ Modify the content of the `src/routes/posts/page.js` file to：
 > Notice: Loaders can be synchronous or asynchronous
 
 ```jsx
-import { useLoaderData } from '@shuvi/runtime';
+import { useLoaderData,Link } from '@shuvi/runtime';
 import { postsMockData } from "../../posts-mock-data";
 
 export default function PostsPage() {
   const data = useLoaderData();
   
-  return <div>
-    <ul>
-      { data.posts?.map(post => {
-        return (
-          <li key={ post.id }>
-            <h3>{ post.title }</h3>
-            <h3>{ post.content }</h3>
-          </li>
-        );
-      }) }
-    </ul>
-  </div>;
+  return (
+    <div>
+      <ul>
+        { data.posts.map(post => {
+          return (
+            <li key={ post.id }>
+              <Link>{post.title}</Link>
+            </li>
+          );
+        }) }
+      </ul>
+    </div>
+  );
 }
 
 export const loader = () => {
@@ -190,8 +191,7 @@ export default function PostsLayout() {
           return (
             <li key={ post.id }>
               <Link to={ `/posts/${ post.id }` }>
-                <h3>{ post.title }</h3>
-                <h3>{ post.content }</h3>
+                {post.title}
               </Link>
             </li>
           );
@@ -230,14 +230,14 @@ import img2 from './assets/img2.png';
 export const postsMockData = [
   {
     id:'1',
-    title:"first-post",
-    content:"first-post-content",
+    title:"First-post",
+    content:"First-post-content",
     img:img1
   },
   {
     id:'2',
-    title:"second-post",
-    content:"second-post-content",
+    title:"Second-post",
+    content:"Second-post-content",
     img:img2
   }
 ]
@@ -278,10 +278,63 @@ Revisit the post page and you can see that the image has been loaded.
 
 Create the `style.css` file in the `src/routes/posts` directory.
 
-```
-.headerNav {
-  color: yellow;
+```css
+
+* {
+  padding: 0;
+  margin: 0;
 }
+
+.headerNav {
+  display: flex;
+  color: yellow;
+  border-bottom: 1px solid #f1f1f1;
+}
+
+.headerNav  li {
+  list-style: none;
+  cursor: pointer;
+  padding: 12px;
+  border-right: 1px solid #f1f1f1;
+}
+
+.headerNav li a {
+  text-decoration: none;
+  color: #00a4db
+}
+
+.headerNav li:hover a {
+  color: #2d66c3;
+
+}
+
+.mainContent {
+  margin:20px 40px;
+  padding: 20px;
+}
+
+.mainContent h1, .mainContent h2 {
+  text-align: center;
+  font-weight: 400;
+  border-bottom: 1px solid #f1f1f1;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+}
+
+.mainContent p:first-of-type img{
+  width: 100%;
+  object-fit: cover;
+  height: 200px;
+}
+
+.mainContent p:last-of-type {
+  padding: 20px;
+  border: 1px solid #f1f1f1;
+  font-size: 14px;
+  font-weight: 200;
+}
+
+
 ```
 
 Modify the content of the `src/routes/posts/layout.js` file to：
@@ -295,20 +348,19 @@ export default function PostsLayout() {
   const data = useLoaderData();
   
   return (
-    <div className={styles.headerNav}>
-      <ul>
+    <div >
+      <ul className={styles.headerNav}>
         { data.posts?.map(post => {
           return (
             <li key={ post.id }>
               <Link to={ `/posts/${ post.id }` }>
-                <h3>{ post.title }</h3>
-                <h3>{ post.content }</h3>
+                {post.title}
               </Link>
             </li>
           );
         }) }
       </ul>
-      <div>
+      <div className={styles.mainContent}>
         <RouterView/>
       </div>
     </div>
