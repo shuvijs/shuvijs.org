@@ -8,7 +8,7 @@ Read the agreed files from **src/routes** in the project root directory,
 such as page.js, **`layout.js`**, **`api.js`**, **`middleware.js`**.
 Which produces the corresponding **`React Component`** routing hierarchy.
 
-## Conventions rules
+## Generate routing paths
 
 The names of the directories under src/routes determine the rules for generating routes
 
@@ -26,7 +26,7 @@ The names of the directories under src/routes determine the rules for generating
 
 
 
-## Dynamic rules
+## Generate dynamic paths
 
 Defining routes by using predefined paths is not always enough for complex applications.
 In shuvi you can add brackets to a directory name (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
@@ -107,7 +107,10 @@ The `params` objects are as follows:
 
 > [details about matched rules](#Match rules)
 
-## Page routes
+
+## Generate routing endpoints
+
+### Page routes
 
 
 The directory name determines the path, page.js determines the rendered content.
@@ -118,13 +121,13 @@ Can be nested in any folder.
 > The extension of the routing file is not limited to **`.js`**, but can also be **`.ts`**, **`.tsx`**, and **`.jsx`**.
 
 
-### Usage
+#### Usage
 
 1. Create a `page.js` file under your `routes` directory.
 2. Finally, export a React component function from the `page.js` file by default.
 
 
-### Example
+#### Example
 
 
 ```jsx
@@ -139,7 +142,7 @@ export default function Index() {
 }
 ```
 
-## Layout
+### Layout routes
 
 
 Layout is suitable for scenarios that require nested routing.
@@ -148,7 +151,7 @@ Similar to the `<router-view>` of `Vue-router`.
 Layout can be understood as a more advanced page, it has all the capabilities of page,
 and has the ability to share areas without repeated rendering and scheduling of sub-routes.
 
-### Usage
+#### Usage
 
 
 1. Create a `layout.js` file under your `routes` directory.
@@ -156,7 +159,7 @@ and has the ability to share areas without repeated rendering and scheduling of 
 3. Use 'RouterView Component' to render your child routes
 
 
-### Example
+#### Example
 
 A small example of a shared top navigation bar.
 
@@ -221,7 +224,7 @@ Implemented regional component sharing
 > **Notice**: Layout and page do not conflict with dynamic segment and can be freely combined.
 
 
-## API routes
+### API routes
 
 API routes provide a solution to build your **API** with shuvi.
 
@@ -237,12 +240,12 @@ Any file inside the folder `src/routes`, each api is associated with a route bas
 | routes/api/post/[[...pid]]/api.js | /api/post/:pid*  | /api/post, /api/post/1/2, /api/post/a/b/c |
 
 
-### Usage
+#### Usage
 
 1. Create a `api.js` file under your `routes` directory.
 2. Finally, export an api function from the `api.js` file by default.
 
-### Example
+#### Example
 
 For example, the following API route `routes/api/user/api.js` returns a `json` response with a status code of `200`:
 
@@ -275,7 +278,7 @@ export default apiHandler
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
-### enhanced request
+#### enhanced request
 
 API routes provide built in middlewares which parse the incoming request (`req`). Those middlewares are:
 
@@ -283,7 +286,7 @@ API routes provide built in middlewares which parse the incoming request (`req`)
 - `req.query` - An object containing the [query string](https://en.wikipedia.org/wiki/Query_string). Defaults to `{}`
 - `req.body` - An object containing the body parsed by `content-type`, or `null` if no body was sent
 
-### Custom config
+#### Custom config
 
 The `apiConfig` object includes all configs available for API routes.
 
@@ -321,7 +324,7 @@ export const config = {
 }
 ```
 
-### enhanced response
+#### enhanced response
 
 The response (`res`) includes a set of Express.js-like methods to improve the developer experience and increase the speed of creating new API endpoints, take a look at the following example:
 
@@ -341,14 +344,14 @@ The included helpers are:
 > Notice: api.js and page.js are conflicting, when both exist, only page.js will be enabled.
 
 
-## Middleware routes
+### Middleware routes
 
 
 Middleware enables you to use code over configuration. This gives you full flexibility in shuvi, because you can run code before a request is completed.
 
 Based on the user's incoming request, you can modify the response by rewriting, redirecting, adding headers.
 
-### Usage
+#### Usage
 
 
 Middleware is created by using a `middleware` function that lives inside a `middleware.js` file.
@@ -369,7 +372,7 @@ export const middleware:RuntimeServer.IRequestHandlerWithNext = function (req, r
 ```
 > Details of `RuntimeServer.IRequestHandlerWithNext` types is [here](../api-reference/runtime/modules/RuntimeServer.md#irequesthandlerwithnext)
 
-### Execution Order
+#### Execution Order
 
 If your Middleware is created in `/src/routes/middleware.ts`, it will run on all routes within the `routes` directory. The below example assumes you have `routes/about/page.tsx` and `routes/teams/page.tsx` routes.
 
@@ -399,7 +402,7 @@ If you _do_ have sub-directories with nested routes, middleware will run from th
           page.tsx
 ```
 
-### Config
+#### Config
 
 You can also define middleware routing in shuvi.config.js.
 
