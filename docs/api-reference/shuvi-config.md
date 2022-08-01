@@ -285,7 +285,11 @@ apiConfig: {
   },
 ```
 
+<<<<<<< Updated upstream:docs/api-reference/shuvi-config.md
 set common config of [apiRoutes](../guide/routes.md#custom-config).
+=======
+set common config of [apiRoutes](../guide/Conventional-Routes/api-routes.md).
+>>>>>>> Stashed changes:docs/api-reference/config.md
 
 ### experimental.parcelCss
 - type: `Boolean`
