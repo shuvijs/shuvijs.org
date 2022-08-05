@@ -13,97 +13,108 @@ Which produces the corresponding **`React Component`** routing hierarchy.
 The names of the directories under src/routes determine the rules for generating routes
 
 **Example**:
-
-| directory path  | route path |
-|-----------------|------------|
-| src/routes/     | /          |
-| src/routes/a    | /a         |
-| src/routes/a/a1 | /a/a1      |
-| src/routes/b    | /b         |
-| src/routes/b/b1 | /b/b1      |
-| src/routes/b/b2 | /b/b2      |
-
-
-
+```
+src
+└── routes
+    ├── page.jsx ───────────────── /
+    ├── categories
+    │   ├── page.jsx ───────────── /categories
+    │   ├── $categoryId
+    │   │   └── page.jsx ───────── /categories/:categoryId
+    ├── articles
+    │   ├── page.jsx ───────────── /articles
+    │   ├── $articleId
+    │   │   ├── page.jsx ───────── /articles/:articleId
+    │   │   └── $commentId
+    │   │       └── page.jsx ───── /articles/:articleId/:commentId
+    │   ├── layout.jsx
+    ├── tags
+    │   ├── page.jsx ───────────── /tags
+    ├── setting
+    │   ├── page.jsx ───────────── /setting
+    │   ├── accountInfo
+    │   │   └── page.jsx ───────── /setting/accountInfo
+    │   ├── preference
+    │   │   └── page.jsx ───────── /setting/preference
+    │   ├── others
+    │   │   └── page.jsx ───────── /setting/others 
+    │   │   └── $
+    │   │       └── page.jsx ───── /setting/others/*
+    │   └── layout.jsx
+    └── layout.jsx
+```
 
 ## Generate dynamic paths
 
 Defining routes by using predefined paths is not always enough for complex applications.
-In shuvi you can add brackets to a directory name (`[param]`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
+In shuvi you can add brackets to a directory name (`$param`) to create a dynamic route (a.k.a. url slugs, pretty urls, and others).
 
-Consider the following directory `routes/post/[pid]`:
+Consider the following directory `routes/post/$postId`:
 
-Any route like `/post/1`, `/post/abc`, etc. will be matched by `routes/post/[pid]`.
+Any route like `/post/traveling`, `/post/hiking`, etc. will be matched by `routes/post/$postId`.
 
 
-For example, the route `/post/abc` will have the following `params` object:
+For example, the route `/post/traveling` will have the following `params` object:
 
 ```json
-{ "pid": "abc" }
+{ "postId": "traveling" }
 ```
 
-Similarly, the route `/post/abc?foo=bar` will have the following `params` and `query` object:
+Similarly, the route `/post/traveling?language=en` will have the following `params` and `query` object:
 
 ```json lines
 // params
-{"pid": "abc"}
+{"postId": "traveling"}
 // query
-{ "foo": "bar" }
+{ "language": "en" }
 ```
 
-Multiple dynamic route segments work the same way. The page `routes/post/[pid]/[comment]` will match the route `/post/abc/a-comment` and its `params` object will be:
+Multiple dynamic route segments work the same way. The page `routes/post/$postId/$commentId` will match the route `/post/traveling/randomCommentId` and its `params` object will be:
 
 ```json
-{ "pid": "abc", "comment": "a-comment" }
+{ "postId": "traveling", "commentId": "randomCommentId" }
 ```
 
 
-### Catch all routes
+### Splats
 
-Dynamic routes can be extended to catch all paths by adding three dots (`...`) inside the brackets. For example:
+Dynamic routes could deal with any URL by naming a fold `$`. It will match the value in the rest of URL to the end.
 
-- `routes/post/[...slug]` matches `/post/a`, but also `/post/a/b`, `/post/a/b/c` and so on.
+- `routes/setting/others/$` matches `/setting/others`, but also `/setting/others/background`, `/setting/others/background/color`, `/setting/others/resolution` and so on.
 
-> **Note**: You can use names other than `slug`, such as: `[...param]`
+You could get matched params in the loader function
+```js
+import { Loader } from '@shuvi/runtime';
 
-Matched parameters will be sent as a query parameter (`slug` in the example) to the page, and it will always be an array, so, the path `/post/a` will have the following `params` object:
+export const loader: Loader = async ctx => {
+  ctx.params['*'] // "" or "background" or "background/color"
+};
 
-```json
-{ "slug": ["a"] }
+export default App;
 ```
 
-And in the case of `/post/a/b`, and any other matching path, new parameters will be added to the array, like so:
+or using the hook revealed from `shuvi` out of the box
+``` jsx
+import { useParams } from '@shuvi/runtime';
 
-```json
-{ "slug": ["a", "b"] }
+function App() {
+  const params = useParams();
+  params['*'] // "" or "background" or "background/color" 
+}
+
+export default App;
+
 ```
 
-### Optional catch all routes
 
-Catch all routes can be made optional by including the parameter in double brackets (`[[...slug]]`).
-
-For example, `routes/post/[[...slug]]` will match `/post`, `/post/a`, `/post/a/b`, and so on.
-
-The main difference between catch all and optional catch all routes is that with optional, the route without the parameter is also matched (`/post` in the example above).
-
-The `params` objects are as follows:
-
-```json lines
-{ "slug": [] } // GET `/post` (empty array)
-{ "slug": ["a"] } // `GET /post/a` (single-element array)
-{ "slug": ["a", "b"] } // `GET /post/a/b` (multi-element array)
-```
-
-### general rules
+### General rules
 
 
 | path                   | route        | matched url                   |
 |------------------------|--------------|-------------------------------|
-| routes/post/create     | /post/create | /post/create                  |
-| routes/post/[pid]      | /post/:pid   | /post/1, /post/abc            |
-| routes/post/[[pid]]    | /post/:pid?  | /post, /post/1, /post/abc     |
-| routes/post/[...pid]   | /post/:pid+  | /post/1/2, /post/a/b/c        |
-| routes/post/[[...pid]] | /post/:pid*  | /post, /post/1/2, /post/a/b/c |
+| routes/tags     | /tags | /tags                  |
+| routes/articles/$articleId      | /articles/:articleId   | /articles/traveling, /articles/hiking            |
+| routes/setting/others/$    | /setting/others/*  | /setting/others, /setting/others/any-routes, /setting/others/any-routes/any/routes     |
 
 > [details about matched rules](#Match rules)
 
@@ -146,7 +157,7 @@ export default function Index() {
 
 
 Layout is suitable for scenarios that require nested routing.
-Similar to the `<router-view>` of `Vue-router`.
+Similar to the `<router-view>` of `Vue-router` and `<Outlet>` of `Remix`
 
 Layout can be understood as a more advanced page, it has all the capabilities of page,
 and has the ability to share areas without repeated rendering and scheduling of sub-routes.
@@ -234,10 +245,8 @@ Any file inside the folder `src/routes`, each api is associated with a route bas
 | path                              | route            | matched url                               |
 |-----------------------------------|------------------|-------------------------------------------|
 | routes/api/post/create/api.js     | /api/post/create | /api/post/create                          |
-| routes/api/post/[pid]/api.js      | /api/post/:pid   | /api/post/1, /api/post/abc                |
-| routes/api/post/[[pid]]/api.js    | /api/post/:pid?  | /api/post, /api/post/1, /api/post/abc     |
-| routes/api/post/[...pid]/api.js   | /api/post/:pid+  | /api/post/1/2, /api/post/a/b/c            |
-| routes/api/post/[[...pid]]/api.js | /api/post/:pid*  | /api/post, /api/post/1/2, /api/post/a/b/c |
+| routes/api/post/$pid/api.js      | /api/post/:pid   | /api/post/1, /api/post/abc                |
+| routes/api/post/$/api.js    | /api/post/*  | /api/post, /api/post/1, /api/post/1/2, /api/post/abc/other/path     |
 
 
 #### Usage
