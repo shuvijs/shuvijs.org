@@ -1,12 +1,11 @@
 ---
-id: Tutorials
+id: tutorials
 title: Tutorials
 ---
+
 ## Introduction
 
 shuvi is a front-end application development solution that integrates modern tool chains, focuses on improving development experience and efficiency.
-
-
 
 ## Create your first app
 
@@ -49,7 +48,7 @@ Modify the script field in package.json to:
 
 Create the src/routes directory.
 
-> notice: In the convention routing specification, 
+> notice: In the convention routing specification,
 > all our routing endpoint files are placed in the src/routes directory.
 
 ```shell
@@ -61,7 +60,7 @@ We want to create a component handle to the `/posts` path.
 Create the `src/routes/posts` directory.
 
 ```shell
-mkdir -p src/routes/posts 
+mkdir -p src/routes/posts
 ```
 
 Create the `page.js` file in the `src/routes/posts` directory.
@@ -70,7 +69,7 @@ The file content of page.js is:
 
 ```jsx
 export default function PostsPage() {
-  return <div>posts</div>
+  return <div>posts</div>;
 }
 ```
 
@@ -78,22 +77,21 @@ Now visit `http://localhost:3000` and you will see the `PostsPage` component.
 
 ### Use loader data
 
-
 Create the `posts-mock-data.js` file in the `src` directory.
 
 ```javascript
 export const postsMockData = [
   {
-    id:'1',
-    title:"First-post",
-    content:"First-post-content"
+    id: "1",
+    title: "First-post",
+    content: "First-post-content",
   },
   {
-    id:'2',
-    title:"Second-post",
-    content:"Second-post-content"
-  }
-]
+    id: "2",
+    title: "Second-post",
+    content: "Second-post-content",
+  },
+];
 ```
 
 Modify the content of the `src/routes/posts/page.js` file to：
@@ -101,37 +99,36 @@ Modify the content of the `src/routes/posts/page.js` file to：
 > Notice: Loaders can be synchronous or asynchronous
 
 ```jsx
-import { useLoaderData,Link } from '@shuvi/runtime';
+import { useLoaderData, Link } from "@shuvi/runtime";
 import { postsMockData } from "../../posts-mock-data";
 
 export default function PostsPage() {
   const data = useLoaderData();
-  
+
   return (
     <div>
       <ul>
-        { data.posts.map(post => {
+        {data.posts.map((post) => {
           return (
-            <li key={ post.id }>
+            <li key={post.id}>
               <Link>{post.title}</Link>
             </li>
           );
-        }) }
+        })}
       </ul>
     </div>
   );
 }
 
 export const loader = () => {
-  return new Promise(res => {
+  return new Promise((res) => {
     setTimeout(() => {
       res({
-        posts:postsMockData
-      })
-    },1000)
+        posts: postsMockData,
+      });
+    }, 1000);
   });
 };
-
 ```
 
 ### Dynamic route
@@ -144,28 +141,26 @@ Create the `page.js` file in the `blog/src/routes/posts/[id]` directory.
 import { useLoaderData } from "@shuvi/runtime";
 import { postsMockData } from "../../../posts-mock-data";
 
-
 export default function PostPage() {
-  const { id,title,content } = useLoaderData();
+  const { id, title, content } = useLoaderData();
   return (
     <div>
       <h1>{title}</h1>
       <h2>ID:{id}</h2>
       <p>{content}</p>
     </div>
-  )
+  );
 }
 
-export const loader = ctx => {
+export const loader = (ctx) => {
   const { id } = ctx.params;
-  return postsMockData.find(item => item.id === id)
-}
-
+  return postsMockData.find((item) => item.id === id);
+};
 ```
 
->Notice: When `[id]` is used as a folder name, it will become a dynamic path rule.
+> Notice: When `[id]` is used as a folder name, it will become a dynamic path rule.
 
-When we visit /posts/1 or /posts/2, 
+When we visit /posts/1 or /posts/2,
 we will get the correct post content.
 
 ### Layout route
@@ -173,47 +168,43 @@ we will get the correct post content.
 We also need a component to control nested routes as a common layout
 component to avoid repeated rendering.
 
-Change src/routes/post/page.js to src/routes/post.layout.js, 
+Change src/routes/post/page.js to src/routes/post.layout.js,
 and modify the file content as:
 
 ```jsx
-import { useLoaderData, Link, RouterView } from '@shuvi/runtime';
+import { useLoaderData, Link, RouterView } from "@shuvi/runtime";
 import { postsMockData } from "../../posts-mock-data";
-
 
 export default function PostsLayout() {
   const data = useLoaderData();
-  
+
   return (
     <div>
       <ul>
-        { data.posts?.map(post => {
+        {data.posts?.map((post) => {
           return (
-            <li key={ post.id }>
-              <Link to={ `/posts/${ post.id }` }>
-                {post.title}
-              </Link>
+            <li key={post.id}>
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
             </li>
           );
-        }) }
+        })}
       </ul>
       <div>
-        <RouterView/>
+        <RouterView />
       </div>
     </div>
   );
 }
 
 export const loader = () => {
-  return new Promise(res => {
+  return new Promise((res) => {
     setTimeout(() => {
       res({
-        posts: postsMockData
+        posts: postsMockData,
       });
     }, 1000);
   });
 };
-
 ```
 
 ### Assets
@@ -223,25 +214,23 @@ Create the src/assets directory and place two image files at will.
 Modify the content of the `src/post-mock-data.js` file to：
 
 ```jsx
-
-import img1 from './assets/img1.png';
-import img2 from './assets/img2.png';
+import img1 from "./assets/img1.png";
+import img2 from "./assets/img2.png";
 
 export const postsMockData = [
   {
-    id:'1',
-    title:"First-post",
-    content:"First-post-content",
-    img:img1
+    id: "1",
+    title: "First-post",
+    content: "First-post-content",
+    img: img1,
   },
   {
-    id:'2',
-    title:"Second-post",
-    content:"Second-post-content",
-    img:img2
-  }
-]
-
+    id: "2",
+    title: "Second-post",
+    content: "Second-post-content",
+    img: img2,
+  },
+];
 ```
 
 Modify the content of the `src/routes/posts/[id]/page.js` file to：
@@ -250,26 +239,24 @@ Modify the content of the `src/routes/posts/[id]/page.js` file to：
 import { useLoaderData } from "@shuvi/runtime";
 import { postsMockData } from "../../../posts-mock-data";
 
-
 export default function PostPage() {
-  const { id,title,content,img } = useLoaderData();
+  const { id, title, content, img } = useLoaderData();
   return (
     <div>
       <h1>{title}</h1>
       <h2>ID:{id}</h2>
       <p>{content}</p>
       <p>
-        <img src={img} alt=""/>
+        <img src={img} alt="" />
       </p>
     </div>
-  )
+  );
 }
 
-export const loader = ctx => {
+export const loader = (ctx) => {
   const { id } = ctx.params;
-  return postsMockData.find(item => item.id === id)
-}
-
+  return postsMockData.find((item) => item.id === id);
+};
 ```
 
 Revisit the post page and you can see that the image has been loaded.
@@ -279,7 +266,6 @@ Revisit the post page and you can see that the image has been loaded.
 Create the `style.css` file in the `src/routes/posts` directory.
 
 ```css
-
 * {
   padding: 0;
   margin: 0;
@@ -291,7 +277,7 @@ Create the `style.css` file in the `src/routes/posts` directory.
   border-bottom: 1px solid #f1f1f1;
 }
 
-.headerNav  li {
+.headerNav li {
   list-style: none;
   cursor: pointer;
   padding: 12px;
@@ -300,20 +286,20 @@ Create the `style.css` file in the `src/routes/posts` directory.
 
 .headerNav li a {
   text-decoration: none;
-  color: #00a4db
+  color: #00a4db;
 }
 
 .headerNav li:hover a {
   color: #2d66c3;
-
 }
 
 .mainContent {
-  margin:20px 40px;
+  margin: 20px 40px;
   padding: 20px;
 }
 
-.mainContent h1, .mainContent h2 {
+.mainContent h1,
+.mainContent h2 {
   text-align: center;
   font-weight: 400;
   border-bottom: 1px solid #f1f1f1;
@@ -321,7 +307,7 @@ Create the `style.css` file in the `src/routes/posts` directory.
   padding-bottom: 12px;
 }
 
-.mainContent p:first-of-type img{
+.mainContent p:first-of-type img {
   width: 100%;
   object-fit: cover;
   height: 200px;
@@ -333,52 +319,46 @@ Create the `style.css` file in the `src/routes/posts` directory.
   font-size: 14px;
   font-weight: 200;
 }
-
-
 ```
 
 Modify the content of the `src/routes/posts/layout.js` file to：
 
 ```jsx
-import { useLoaderData, Link, RouterView } from '@shuvi/runtime';
+import { useLoaderData, Link, RouterView } from "@shuvi/runtime";
 import { postsMockData } from "../../posts-mock-data";
-import styles from './style.css'
+import styles from "./style.css";
 
 export default function PostsLayout() {
   const data = useLoaderData();
-  
+
   return (
-    <div >
+    <div>
       <ul className={styles.headerNav}>
-        { data.posts?.map(post => {
+        {data.posts?.map((post) => {
           return (
-            <li key={ post.id }>
-              <Link to={ `/posts/${ post.id }` }>
-                {post.title}
-              </Link>
+            <li key={post.id}>
+              <Link to={`/posts/${post.id}`}>{post.title}</Link>
             </li>
           );
-        }) }
+        })}
       </ul>
       <div className={styles.mainContent}>
-        <RouterView/>
+        <RouterView />
       </div>
     </div>
   );
 }
 
 export const loader = () => {
-  return new Promise(res => {
+  return new Promise((res) => {
     setTimeout(() => {
       res({
-        posts: postsMockData
+        posts: postsMockData,
       });
     }, 1000);
   });
 };
 ```
-
-
 
 ### Deploy
 

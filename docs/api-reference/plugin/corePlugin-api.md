@@ -51,7 +51,7 @@ A series of path viriables.
 
 Current shuvi config
 
-- type: [API Reference / shuvi.config.js](../shuvi-config.md)
+- type: [API Reference / shuvi.config.js](../config.md)
 
 #### `phase`
 

@@ -5,37 +5,89 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-
-
-
-
-
-.getStarted {
-  width: 140px;
-  height: 40px;
-  cursor:pointer;
-  border-radius: 4px;
-  border: 1px solid;
+.header {
+  height: 400px;
+  background: url("/img/bg.jpg");
+  text-align: center;
+  background-size: cover;
   display: flex;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 38px;
-  text-decoration: none;
+  align-items: center;
 }
 
-.getStarted:hover {
-  opacity: .7;
-  text-decoration: none;
-
+.header h1,
+.header h2 {
+  font-size: 34px;
+  line-height: 48px;
+  color: #f5f6f7;
 }
 
-.getStarted span {
-  font-size: 14px;
-  font-weight: 500;
-  /*color: #FFFFFF;*/
-  line-height: 20px;
+.header h2 {
+  font-weight: lighter;
 }
 
+.hero {
+  background-color: #2b3137;
+  padding: 48px;
+}
+
+.heroInner {
+  margin: 0 auto;
+  max-width: 1100px;
+  padding: 0 20px;
+}
+
+.heroProjectTagline {
+  color: #fff;
+  font-size: 60px;
+  margin: 0;
+}
+
+.heroTitleTextHtml b {
+  color: var(--ifm-color-primary);
+}
+
+.heroLogo {
+  animation-duration: 2s;
+  animation-name: jack-in-the-box;
+  float: right;
+  margin-top: 20px;
+  padding: 0 20px 20px;
+  height: auto;
+}
+
+.indexCtas {
+  --ifm-button-size-multiplier: 1.6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: 24px;
+}
+
+.indexCtas a,
+.indexCtas a:hover {
+  color: black;
+}
+
+.indexCtas a:last-of-type {
+  margin: 20px 36px;
+}
+
+.indexCtasGitHubButtonWrapper {
+  display: flex;
+}
+
+.indexCtasGitHubButton {
+  overflow: hidden;
+}
+
+.indexCtaTryNowButton:hover {
+  color: var(--ifm-color-primary);
+}
+
+.featuresWrapper {
+}
 
 .features {
   display: flex;
@@ -43,9 +95,6 @@
   justify-content: space-between;
   padding: 90px 0;
   text-align: center;
-}
-
-.featuresWrapper {
   background: var(--docsearch-modal-background);
 }
 
@@ -59,11 +108,9 @@
   font-weight: 300;
 }
 
-
 .featureImg {
   width: 145px;
   height: 145px;
-
   background: var(--docsearch-searchbox-background);
   border-radius: 50%;
   margin: 20px auto;
@@ -78,11 +125,6 @@
   font-weight: 300;
 }
 
-
-
-
-
-
 .header {
   height: 400px;
   background: url("/img/bg.jpg");
@@ -94,56 +136,89 @@
   align-items: center;
 }
 
-.header h1,.header h2 {
+.header h1,
+.header h2 {
   font-size: 34px;
   line-height: 48px;
-  color:#f5f6f7;
+  color: #f5f6f7;
 }
 
 .header h2 {
   font-weight: lighter;
 }
 
-
-.hero {
+.featureShowCases {
   padding: 120px 0;
-
 }
 
-.heroBanner {
+.featureShowCasesTilte {
   text-align: center;
   margin-bottom: 110px;
 }
 
-.heroBanner h2 {
+.featureShowCasesTilte h2 {
   font-size: 34px;
 }
 
-.hero p {
+.featureShowCases p {
   font-size: 16px;
   font-weight: 300;
   line-height: 28px;
 }
 
-.heroItem {
+.featureShowcase {
   display: flex;
   justify-content: space-between;
   margin-top: 80px;
 }
 
-.hero .heroItem > div:first-child,.hero .heroItem > pre:first-child {
+.featureShowcase > div:first-child,
+.featureShowcase > pre:first-child {
   margin-right: 200px;
 }
 
-.heroLink {
+.featureShowcaseLink {
   background: var(--ifm-bg-primary);
   padding: 10px 42px;
   border-radius: 4px;
 }
 
-
-.highlight {
+.featureShowcaseCode {
   padding: 1em;
   flex: 1;
   border-radius: 14px;
+}
+
+@media only screen and (max-width: 768px) {
+  .hero {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  .heroInner {
+    padding: 0;
+  }
+
+  .heroProjectTagline {
+    font-size: 36px;
+    text-align: center;
+  }
+
+  .heroLogo {
+    display: block;
+    float: none;
+    margin: 0 auto;
+  }
+
+  .indexCtas {
+    justify-content: center;
+  }
+
+  .indexCtas a {
+    margin: 20px 36px;
+  }
+
+  .indexCtasGitHubButton {
+    display: none;
+  }
 }

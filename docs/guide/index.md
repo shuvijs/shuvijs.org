@@ -1,11 +1,13 @@
 ---
+id: index
+title: Overview
+slug: /guide
 sidebar_position: 1
-id: Basic Support
 ---
 
 ## Supported Browsers and Features
 
-Shuvi supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
+Shuvi.js supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
 
 ## Polyfills
 
@@ -374,13 +376,13 @@ export default () => (
 
 ## http-proxy
 
-Quick proxy requests by [shuvi.config](../api-reference/shuvi-config.md#proxy)
+Quick proxy requests by [shuvi.config](../api-reference/config.md#proxy)
 
 ## Serving Static Files
 
 ### Static Files under `public` before built
 
-Shuvi can serve static files like images, CSS files, or JavaScript files, under the `/public` folder. Files inside the folder will be treated as static resources which could be accessed by the prefix `/`.
+Shuvi.js can serve static files like images, CSS files, or JavaScript files, under the `/public` folder. Files inside the folder will be treated as static resources which could be accessed by the prefix `/`.
 
 example:
 > Access the image `public/icon.png` by following code.

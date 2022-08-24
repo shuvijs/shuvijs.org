@@ -1,12 +1,12 @@
 ---
-id: shuvi-config
+id: config
 title: shuvi.config.js
 sidebar_position: 2
 ---
 
 # Config
 
-Shuvi uses a **`shuvi.config.js`** or **`shuvi.config.ts`** under root directory to customize project configurations.
+Shuvi.js uses a **`shuvi.config.js`** or **`shuvi.config.ts`** under root directory to customize project configurations.
 The config is an object and its type can be inferred by a `defineConfig` method:
 
 ```typescript title="shuvi.config.js"

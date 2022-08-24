@@ -1,3 +1,9 @@
+---
+slug: first-blog-post
+title: First Blog Post
+tags: [hola, docusaurus]
+---
+
 ## history
     Tom and Repraance
 
@@ -7,8 +13,8 @@ shuvi now uses Rust-based compiler [SWC](https://swc.rs/) to compile JavaScript/
 
 ### `Parcel/css` replacing Post-css by experimental
 
-shuvi now uses Rust-based compiler [@parcel/css](https://github.com/parcel-bundler/parcel-css) to compile and minifier css content. 
+shuvi now uses Rust-based compiler [@parcel/css](https://github.com/parcel-bundler/parcel-css) to compile and minifier css content.
 
 This new compiler is more faster than Post-css and [excellent compression performance](https://github.com/parcel-bundler/parcel-css#benchmarks).
 
-> [Enable experimental features to modify config](../docs/api-reference/shuvi-config.md#experimentalparcelcss) 
+> [Enable experimental features to modify config](../docs/api-reference/config.md#experimentalparcelcss)

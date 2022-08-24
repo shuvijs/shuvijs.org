@@ -6,7 +6,7 @@ sidebar_position: 05
 
 ## What is plugin?
 
-Shuvi has a built-in plugin system, which connects the running process of the entire framework through a series of lifecycle hooks, and allows developers and users to add custom behaviors to the hooks to add more functions.
+Shuvi.js has a built-in plugin system, which connects the running process of the entire framework through a series of lifecycle hooks, and allows developers and users to add custom behaviors to the hooks to add more functions.
 
 There are 3 types of plugins which are corePlugin, serverPlugin and runtimePlugin.
 
@@ -227,5 +227,5 @@ export default {
 }
 ```
 
-For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../api-reference/shuvi-config.md#plugins).
+For more detailed plugin configuring api, please refer to [api/shuvi.config.js/plugin](../api-reference/config.md#plugins).
 

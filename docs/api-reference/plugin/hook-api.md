@@ -6,7 +6,7 @@ sidebar_position: 0
 
 ## Overview
 
-Shuvi has 3 types of plugin which are corePlugin, serverPlugin and runtimePlugin.
+Shuvi.js has 3 types of plugin which are corePlugin, serverPlugin and runtimePlugin.
 
 Each plugin consists of a series of hooks.
 
