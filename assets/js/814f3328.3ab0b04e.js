@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshuvi_document=self.webpackChunkshuvi_document||[]).push([[2535],{5641:e=>{e.exports=JSON.parse('{"title":"Recent posts","items":[{"title":"Welcome","permalink":"/shuvijs.org/blog/welcome"},{"title":"First Blog Post","permalink":"/shuvijs.org/blog/first-blog-post"}]}')}}]);

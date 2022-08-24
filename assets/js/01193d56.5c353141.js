@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshuvi_document=self.webpackChunkshuvi_document||[]).push([[1261],{7259:e=>{e.exports=JSON.parse('{"permalink":"/shuvijs.org/blog/tags/facebook","page":1,"postsPerPage":10,"totalPages":1,"totalCount":1,"blogDescription":"Blog","blogTitle":"Blog"}')}}]);

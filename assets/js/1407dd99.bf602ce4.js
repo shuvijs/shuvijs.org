@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshuvi_document=self.webpackChunkshuvi_document||[]).push([[8170],{7669:s=>{s.exports=JSON.parse('{"label":"hola","permalink":"/shuvijs.org/blog/tags/hola","allTagsPath":"/shuvijs.org/blog/tags","count":1}')}}]);

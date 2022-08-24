@@ -1,0 +1,1 @@
+"use strict";(self.webpackChunkshuvi_document=self.webpackChunkshuvi_document||[]).push([[2275],{2275:(u,e,s)=>{s.r(e)}}]);
