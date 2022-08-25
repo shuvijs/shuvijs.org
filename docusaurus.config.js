@@ -66,21 +66,21 @@ const config = {
         items: [
           {
             type: "doc",
-            docId: "tutorials",
+            docId: "introduction",
             position: "right",
-            label: "Tutorials",
+            label: "Docs",
           },
           {
             type: "doc",
-            docId: "guide/index",
+            docId: "guides/index",
             position: "right",
-            label: "Guide",
+            label: "Guides",
           },
           {
             type: "doc",
-            docId: "api-reference/index",
+            docId: "api/index",
             position: "right",
-            label: "API Reference",
+            label: "API",
           },
 
           /* { to: 'docs/introduction', label: 'Start', position: 'right' },

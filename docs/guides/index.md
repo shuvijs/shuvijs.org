@@ -1,7 +1,7 @@
 ---
 id: index
 title: Overview
-slug: /guide
+slug: /guides
 sidebar_position: 1
 ---
 
@@ -48,7 +48,7 @@ In addition to [ES6 features](https://github.com/lukehoban/es6features), also su
 
 ## Typescript Support
 
-shuvi has built-in [TypeScript support](../api-reference/runtime/overview.md). shuvi provide types both runtime and plugins.
+shuvi has built-in [TypeScript support](../api/runtime/overview.md). shuvi provide types both runtime and plugins.
    
 ## CSS Support
 
@@ -376,7 +376,7 @@ export default () => (
 
 ## http-proxy
 
-Quick proxy requests by [shuvi.config](../api-reference/config.md#proxy)
+Quick proxy requests by [shuvi.config](../api/config.md#proxy)
 
 ## Serving Static Files
 

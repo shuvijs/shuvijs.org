@@ -1,6 +1,6 @@
 ---
 id: index
 title: Overview
-slug: /api-reference
+slug: /api
 sidebar_position: 1
 ---

@@ -6,7 +6,7 @@ sidebar_position: 6
 
 # Loader
 
-See what is loader at [Data Fetching](../guide/data-fetching.md)
+See what is loader at [Data Fetching](../guides/data-fetching.md)
 
 ## `useLoaderData` Type:
 ```ts
@@ -116,7 +116,7 @@ export const loader: Loader = async ({ redirect }) => {
 
 Application context object, which is accessiable during the entire lifecycle of application
 
-- type [AppContext](../api-reference/plugin/runtimePlugin-api#getappcontext)
+- type [AppContext](../api/plugin/runtimePlugin-api#getappcontext)
   
 
 ### `req`

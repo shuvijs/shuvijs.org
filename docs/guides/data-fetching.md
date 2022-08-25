@@ -120,7 +120,7 @@ On client side, shuvi will automatically redirect to the error page.
 
 ## Loader Type
 
-Please refer to [API-Reference / Loader](../api-reference/loader)
+Please refer to [API-Reference / Loader](../api/loader)
 
 
 
