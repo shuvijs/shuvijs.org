@@ -5,6 +5,6 @@ const possiblePaths = {
   'lifecycle-hook': require('../../../docs/api-reference/lifecycle-hook.md'),
 };
 
-export const getTocFromItem = id => {
+export const getTocFromId = id => {
   return possiblePaths[id].toc;
 };

@@ -1,3 +1,80 @@
-.test {
-    color: #2e8555;
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.filter {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1rem;
+}
+
+.filter label {
+    color: #2E8555;
+    font-weight: 700;
+}
+
+.filter input {
+    border: 1px solid #2E8555;
+    border-radius: 8px;
+    padding: 6px 12px;
+}
+
+.filter input:focus,
+.filter input:focus-visible {
+    outline: 1px solid #42be79;
+}
+
+.section {
+    margin-bottom: 64px;
+}
+
+h2 {
+    margin: 36px 0;
+    padding-top: 36px;
+    border-top: 1px solid lightgray;
+}
+
+.group {
+    break-inside: avoid;
+    overflow: auto;
+    margin-bottom: 20px;
+    border-radius: 8px;
+    padding: 28px 32px;
+    background-color: oldlace
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.noMatch {
+    font-size: 1.2em;
+    color: #2E8555;
+    text-align: center;
+    margin-top: 36px;
+    padding-top: 36px;
+    border-top: 1px solid oldlace;
+    ;
+}
+
+@media (max-width: 768px) {
+    .header {
+        display: block;
+    }
+}
+
+@media (min-width: 768px) {
+    .groups {
+        columns: 2;
+    }
+}
+
+@media (min-width: 1024px) {
+    .groups {
+        columns: 3;
+    }
 }

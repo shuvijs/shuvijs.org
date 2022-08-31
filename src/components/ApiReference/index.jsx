@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Link from '@docusaurus/Link';
-import { getTocFromItem } from './getTocFromItem';
+import { getTocFromId } from './getTocFromId';
 
 import styles from './styles.module.css';
 
@@ -16,7 +16,7 @@ export function ApiReference({ sections }) {
 
   const getHeaders = item => {
     const id = item.docId.match(/[^/]+(?!.*\/)/)[0];
-    const tocList = getTocFromItem(id);
+    const tocList = getTocFromId(id);
     return tocList;
   };
 
@@ -55,44 +55,54 @@ export function ApiReference({ sections }) {
     .filter(i => i);
 
   return (
-    <div className={styles.test}>
+    <div className={styles.root}>
       <div className={styles.header}>
         <h1>API Reference</h1>
-        <div className="api-filter">
-          <label>
-            Filter
-            <input
-              type="search"
-              placeholder="Enter keyword"
-              value={filterString}
-              onChange={handleFilterChange}
-            />
-          </label>
-          {filteredLists.map(({ label, items }) => {
-            return (
-              <div key={label}>
-                <h2>{label}</h2>
+        <div className={styles.filter}>
+          <label for="filter-bar">Filter</label>
+          <input
+            id="filter-bar"
+            type="search"
+            placeholder="Enter keyword"
+            value={filterString}
+            onChange={handleFilterChange}
+          />
+        </div>
+      </div>
+
+      {filteredLists.length ? (
+        filteredLists.map(({ label, items }) => {
+          return (
+            <div className={styles.section} key={label}>
+              <h2>{label}</h2>
+              <div className={styles.groups}>
                 {items.map(({ label, headers, href }) => {
                   return (
-                    <div key={label}>
+                    <div className={styles.group} key={label}>
                       <Link to={href}>
                         <h3>{label}</h3>
                       </Link>
-                      {headers.map(({ id, value }) => {
-                        return (
-                          <Link key={id} to={`${href}#${id}`}>
-                            {value}
-                          </Link>
-                        );
-                      })}
+                      <ul>
+                        {headers.map(({ id, value }) => {
+                          return (
+                            <li key={id}>
+                              <Link to={`${href}#${id}`}>{value}</Link>
+                            </li>
+                          );
+                        })}
+                      </ul>
                     </div>
                   );
                 })}
               </div>
-            );
-          })}
+            </div>
+          );
+        })
+      ) : (
+        <div className={styles.noMatch}>
+          No API matching "{filterString}" found.
         </div>
-      </div>
+      )}
     </div>
   );
 }
