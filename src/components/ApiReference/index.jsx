@@ -59,7 +59,7 @@ export function ApiReference({ sections }) {
       <div className={styles.header}>
         <h1>API Reference</h1>
         <div className={styles.filter}>
-          <label for="filter-bar">Filter</label>
+          <label htmlFor="filter-bar">Filter</label>
           <input
             id="filter-bar"
             type="search"
