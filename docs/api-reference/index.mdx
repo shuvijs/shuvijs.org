@@ -4,10 +4,7 @@ title: API Reference
 hide_table_of_contents: true
 ---
 
-import {useCurrentSidebarCategory} from '@docusaurus/theme-common';
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
 import { ApiReference } from '@site/src/components/ApiReference';
 
-
-<ApiReference section={useCurrentSidebarCategory().items} />
-
-
+<ApiReference sections={useCurrentSidebarCategory().items} />
