@@ -23,7 +23,7 @@ Intervention HTML with handle `documentProps`, Keyof `documentProps` is `htmlAtt
 
 handle `documentProps` in function `onDocumentProps` and `modifyHtml`.
 
-> Detail type of `onDocumentProps` is [here](../../api/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
+> Detail type of `onDocumentProps` is [here](../../reference/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
 
 ## How to Custom Document
 

@@ -1,47 +1,47 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
 
-const lightCodeTheme = require("prism-react-renderer/themes/github");
-const darkCodeTheme = require("prism-react-renderer/themes/dracula");
+const lightCodeTheme = require('prism-react-renderer/themes/github');
+const darkCodeTheme = require('prism-react-renderer/themes/dracula');
 
-const isDev = process.env.NODE_ENV === "development";
+const isDev = process.env.NODE_ENV === 'development';
 
-const baseURL = "/shuvijs.org/";
-const allDocHomesPaths = ["/docs/"];
+const baseURL = '/shuvijs.org/';
+const allDocHomesPaths = ['/docs/'];
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
-  title: "Shuvi.js",
-  organizationName: "shuvijs", // Usually your GitHub org/user name.
-  projectName: "shuvi", // Usually your repo name.
-  url: "https://shuvijs.github.io/",
+  title: 'Shuvi.js',
+  organizationName: 'shuvijs', // Usually your GitHub org/user name.
+  projectName: 'shuvi', // Usually your repo name.
+  url: 'https://shuvijs.github.io/',
   baseUrl: baseURL,
-  onBrokenLinks: "throw",
-  onBrokenMarkdownLinks: "warn",
-  favicon: "img/favicon.ico",
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
+  favicon: 'img/favicon.ico',
   scripts: [`${baseURL}iconfont.js`],
   i18n: {
-    defaultLocale: "en",
-    locales: ["en"],
+    defaultLocale: 'en',
+    locales: ['en'],
   },
 
   presets: [
     [
-      "classic",
+      'classic',
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          sidebarPath: require.resolve("./sidebars.js"),
+          sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
-          editUrl: "https://github.com/shuvijs/shuvijs.org/tree/master/docs/",
+          editUrl: 'https://github.com/shuvijs/shuvijs.org/tree/master/docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
-          editUrl: "https://github.com/shuvijs/shuvijs.org/tree/master/blog",
+          editUrl: 'https://github.com/shuvijs/shuvijs.org/tree/master/blog',
         },
         theme: {
-          customCss: require.resolve("./src/css/custom.css"),
+          customCss: require.resolve('./src/css/custom.css'),
         },
       }),
     ],
@@ -50,77 +50,77 @@ const config = {
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
     ({
-      image: "img/logo-og.png",
+      image: 'img/logo-og.png',
       algolia: {
-        appId: "shuvijs",
-        apiKey: "ddf5199f80099ebf2895567663218470",
-        indexName: "shuvijs",
+        appId: 'shuvijs',
+        apiKey: 'ddf5199f80099ebf2895567663218470',
+        indexName: 'shuvijs',
       },
       // sidebarCollapsible: false,
       navbar: {
-        title: "Shuvi.js",
+        title: 'Shuvi.js',
         logo: {
-          alt: "Shuvi.js",
-          src: "img/logo.svg",
+          alt: 'Shuvi.js',
+          src: 'img/logo.svg',
         },
         items: [
           {
-            type: "doc",
-            docId: "introduction",
-            position: "right",
-            label: "Docs",
+            type: 'doc',
+            docId: 'introduction',
+            position: 'right',
+            label: 'Docs',
           },
           {
-            type: "doc",
-            docId: "guides/index",
-            position: "right",
-            label: "Guides",
+            type: 'doc',
+            docId: 'guides/index',
+            position: 'right',
+            label: 'Guides',
           },
           {
-            type: "doc",
-            docId: "api/index",
-            position: "right",
-            label: "API",
+            type: 'doc',
+            docId: 'reference/index',
+            position: 'right',
+            label: 'Reference',
           },
 
           /* { to: 'docs/introduction', label: 'Start', position: 'right' },
           { to: 'docs/guide', label: 'Docs', position: 'right' },
           { to: 'docs/api', label: 'API', position: 'right' }, */
-          { to: "/blog", label: "Blog", position: "right" },
+          { to: '/blog', label: 'Blog', position: 'right' },
           {
-            href: "https://github.com/shuvijs/shuvi",
-            position: "right",
-            className: "header-github-link",
-            "aria-label": "GitHub repository",
+            href: 'https://github.com/shuvijs/shuvi',
+            position: 'right',
+            className: 'header-github-link',
+            'aria-label': 'GitHub repository',
           },
         ],
       },
       footer: {
-        style: "dark",
+        style: 'dark',
         links: [
           {
-            title: "Docs",
+            title: 'Docs',
             items: [
               {
-                label: "Tutorials",
-                to: "docs/tutorials",
+                label: 'Tutorials',
+                to: 'docs/tutorials',
               },
               {
-                label: "Guide",
-                to: "docs/guide",
+                label: 'Guide',
+                to: 'docs/guide',
               },
               {
-                label: "API Reference",
-                to: "docs/api-reference",
+                label: 'Reference',
+                to: 'docs/reference',
               },
             ],
           },
           {
-            title: "Social",
+            title: 'Social',
             items: [
               {
-                label: "GitHub",
-                href: "https://github.com/shuvijs/shuvi",
+                label: 'GitHub',
+                href: 'https://github.com/shuvijs/shuvi',
               },
             ],
           },
@@ -135,10 +135,10 @@ const config = {
 
   plugins: [
     [
-      "client-redirects",
+      'client-redirects',
       /** @type {import('@docusaurus/plugin-client-redirects').Options} */
       ({
-        fromExtensions: ["html"],
+        fromExtensions: ['html'],
         createRedirects(routePath) {
           // Redirect to /docs from /docs/introduction, as introduction has been
           // made the home doc
@@ -151,7 +151,7 @@ const config = {
       }),
     ],
     [
-      "ideal-image",
+      'ideal-image',
       /** @type {import('@docusaurus/plugin-ideal-image').PluginOptions} */
       ({
         quality: 70,
