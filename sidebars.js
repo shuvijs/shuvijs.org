@@ -10,6 +10,37 @@
  */
 
 // @ts-check
+const fs = require('fs-extra');
+
+const getTocFromId = id => {
+  const src = fs.readFileSync(`./docs/${id}.md`, 'utf-8');
+  const h2s = src.match(/^## [^\n]+/gm);
+  const cacheAnchor = new Map();
+  let headers = [];
+  if (h2s) {
+    headers = h2s.map(h => {
+      const value = h
+        .slice(2)
+        .replace(/<sup class=.*/, '')
+        .replace(/\\</g, '<')
+        .replace(/`([^`]+)`/g, '$1')
+        .trim();
+
+      let anchor = value
+        .toLowerCase()
+        .replace(' ', '-')
+        .replace(/[^a-zA-Z0-9_-]/g, '');
+      if (cacheAnchor.has(anchor)) {
+        cacheAnchor.set(anchor, cacheAnchor.get(anchor) + 1);
+        anchor = anchor + '-' + cacheAnchor.get(anchor);
+      } else {
+        cacheAnchor.set(anchor, 0);
+      }
+      return { value, anchor };
+    });
+  }
+  return headers;
+};
 
 /** @type {import('@docusaurus/plugin-content-docs').SidebarsConfig} */
 const sidebars = {
@@ -49,12 +80,43 @@ const sidebars = {
         {
           type: 'category',
           label: 'Global API',
-          items: ['api-reference/application', 'api-reference/general'],
+          items: [
+            {
+              type: 'doc',
+              id: 'api-reference/application',
+              customProps: {
+                headers: getTocFromId('api-reference/application'),
+              },
+            },
+            {
+              type: 'doc',
+              id: 'api-reference/general',
+              customProps: {
+                headers: getTocFromId('api-reference/general'),
+              },
+            },
+          ],
         },
         {
           type: 'category',
           label: 'Composition API',
-          items: ['api-reference/setup', 'api-reference/lifecycle-hook'],
+          items: [
+            {
+              type: 'doc',
+              id: 'api-reference/setup',
+              customProps: {
+                headers: getTocFromId('api-reference/setup'),
+              },
+            },
+            {
+              type: 'doc',
+              id: 'api-reference/lifecycle-hook',
+              customProps: {
+                headers: getTocFromId('api-reference/lifecycle-hook'),
+              },
+            },
+          ],
+          customProps: { test: 'test2' },
         },
       ],
     },
