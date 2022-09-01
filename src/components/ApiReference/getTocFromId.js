@@ -5,6 +5,7 @@ const possiblePaths = {
   'lifecycle-hook': require('../../../docs/api-reference/lifecycle-hook.md'),
 };
 
+// filter the h2 header
 export const getTocFromId = id => {
-  return possiblePaths[id].toc;
+  return possiblePaths[id].toc.filter(({ level }) => level === 2);
 };

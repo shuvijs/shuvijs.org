@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from '@docusaurus/Link';
 import { getTocFromId } from './getTocFromId';
 
@@ -6,6 +6,7 @@ import styles from './styles.module.css';
 
 export function ApiReference({ sections }) {
   const [filterString, setFilterString] = useState('');
+  const [sectionsList, setSectionsList] = useState([]);
 
   const normalize = s => s?.toLowerCase().replace(/-/g, ' ');
   const matches = text => normalize(text)?.includes(filterString);
@@ -19,11 +20,6 @@ export function ApiReference({ sections }) {
     const tocList = getTocFromId(id);
     return tocList;
   };
-
-  const sectionsList = sections.map(section => ({
-    ...section,
-    items: section.items.map(item => ({ ...item, headers: getHeaders(item) })),
-  }));
 
   const filteredLists = sectionsList
     .map(section => {
@@ -53,6 +49,18 @@ export function ApiReference({ sections }) {
         : null;
     })
     .filter(i => i);
+
+  useEffect(() => {
+    setSectionsList(
+      sections.map(section => ({
+        ...section,
+        items: section.items.map(item => ({
+          ...item,
+          headers: getHeaders(item),
+        })),
+      }))
+    );
+  }, [sections]);
 
   return (
     <div className={styles.root}>
