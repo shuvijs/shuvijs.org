@@ -3,7 +3,7 @@ import Link from '@docusaurus/Link';
 
 import styles from './styles.module.css';
 
-export function ApiReference({ sections }) {
+export function Api({ sections }) {
   const [filterString, setFilterString] = useState('');
 
   const normalize = s => s?.toLowerCase().replace(/-/g, ' ');
@@ -53,7 +53,7 @@ export function ApiReference({ sections }) {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <h1>API Reference</h1>
+        <h1>API</h1>
         <div className={styles.filter}>
           <label htmlFor="filter-bar">Filter</label>
           <input

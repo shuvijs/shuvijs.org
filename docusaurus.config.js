@@ -78,9 +78,9 @@ const config = {
           },
           {
             type: 'doc',
-            docId: 'reference/index',
+            docId: 'api/index',
             position: 'right',
-            label: 'Reference',
+            label: 'API',
           },
 
           /* { to: 'docs/introduction', label: 'Start', position: 'right' },
@@ -110,8 +110,8 @@ const config = {
                 to: 'docs/guide',
               },
               {
-                label: 'Reference',
-                to: 'docs/reference',
+                label: 'API',
+                to: 'docs/api',
               },
             ],
           },

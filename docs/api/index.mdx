@@ -1,0 +1,11 @@
+---
+id: index
+title: API
+hide_title: true
+hide_table_of_contents: true
+---
+
+import { useCurrentSidebarCategory } from '@docusaurus/theme-common';
+import { Api } from '@site/src/components/Api';
+
+<Api sections={useCurrentSidebarCategory().items} />

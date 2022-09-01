@@ -17,4 +17,4 @@ shuvi now uses Rust-based compiler [@parcel/css](https://github.com/parcel-bundl
 
 This new compiler is more faster than Post-css and [excellent compression performance](https://github.com/parcel-bundler/parcel-css#benchmarks).
 
-> [Enable experimental features to modify config](/docs/api-reference/config#experimentalparcelcss)
+> [Enable experimental features to modify config](/docs/reference/config#experimentalparcelcss)
