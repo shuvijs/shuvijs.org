@@ -12,19 +12,19 @@
 }
 
 .filter label {
-    color: #2E8555;
-    font-weight: 700;
+    color: var(--ifm-color-primary);
+    font-weight: var(--ifm-heading-font-weight);
 }
 
 .filter input {
-    border: 1px solid #2E8555;
+    border: 1px solid var(--ifm-color-primary);
     border-radius: 8px;
     padding: 6px 12px;
 }
 
 .filter input:focus,
 .filter input:focus-visible {
-    outline: 1px solid #42be79;
+    outline: 1px solid var(--ifm-color-primary-light);
 }
 
 .section {
@@ -34,7 +34,7 @@
 h2 {
     margin: 36px 0;
     padding-top: 36px;
-    border-top: 1px solid lightgray;
+    border-top: 2px solid var(--ifm-menu-color-background-hover);
 }
 
 .group {
@@ -43,7 +43,7 @@ h2 {
     margin-bottom: 20px;
     border-radius: 8px;
     padding: 28px 32px;
-    background-color: oldlace
+    background-color: var(--ifm-menu-color-background-hover)
 }
 
 ul {
@@ -53,11 +53,11 @@ ul {
 
 .noMatch {
     font-size: 1.2em;
-    color: #2E8555;
+    color: var(--ifm-color-primary);
     text-align: center;
     margin-top: 36px;
     padding-top: 36px;
-    border-top: 1px solid oldlace;
+    border-top: 2px solid var(--ifm-menu-color-background-hover);
     ;
 }
 
