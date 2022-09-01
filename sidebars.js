@@ -58,11 +58,6 @@ const sidebars = {
         },
       ],
     },
-    {
-      type: 'link',
-      label: 'Guides',
-      href: '/docs/guides',
-    },
     // {
     //   "Getting Stared": ["tutorials", "playground"]
     // },
