@@ -98,7 +98,6 @@ const sidebars = {
               },
             },
           ],
-          customProps: { test: 'test2' },
         },
       ],
     },
