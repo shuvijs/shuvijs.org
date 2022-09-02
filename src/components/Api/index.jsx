@@ -53,7 +53,7 @@ export function Api({ sections }) {
   return (
     <div className={styles.root}>
       <div className={styles.header}>
-        <h1>API</h1>
+        <h1>API Reference</h1>
         <div className={styles.filter}>
           <label htmlFor="filter-bar">Filter</label>
           <input

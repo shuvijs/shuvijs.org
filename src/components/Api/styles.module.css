@@ -1,3 +1,9 @@
+.root {
+    padding: 48px 16px;
+    max-width: 1024px;
+    margin: 0 auto;
+}
+
 .header {
     display: flex;
     align-items: center;
@@ -62,6 +68,10 @@ ul {
 }
 
 @media (max-width: 768px) {
+    .root {
+        padding: 26px 8px;
+    }
+
     .header {
         display: block;
     }
