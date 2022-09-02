@@ -6,13 +6,12 @@ import { useLocation } from '@docusaurus/router';
 import useBaseUrl from '@docusaurus/useBaseUrl';
 import DocSidebar from '@theme/DocSidebar';
 import ExpandButton from '@theme/DocPage/Layout/Sidebar/ExpandButton';
+import { API_PAGE_PATH } from '../../../constants';
+
 import styles from './styles.module.css';
 // Reset sidebar state when sidebar changes
 // Use React key to unmount/remount the children
 // See https://github.com/facebook/docusaurus/issues/3414
-
-// customized by shuvi
-const API_PAGE_PATH = '/docs/api/';
 
 function ResetOnSidebarChange({ children }) {
   const sidebar = useDocsSidebar();
