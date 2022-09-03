@@ -83,9 +83,6 @@ const config = {
             label: 'API',
           },
 
-          /* { to: 'docs/introduction', label: 'Start', position: 'right' },
-          { to: 'docs/guide', label: 'Docs', position: 'right' },
-          { to: 'docs/api', label: 'API', position: 'right' }, */
           { to: '/blog', label: 'Blog', position: 'right' },
           {
             href: 'https://github.com/shuvijs/shuvi',
@@ -107,7 +104,7 @@ const config = {
               },
               {
                 label: 'Guide',
-                to: 'docs/guide',
+                to: 'docs/guides',
               },
               {
                 label: 'API',

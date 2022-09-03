@@ -140,7 +140,7 @@ function Features() {
               and Middleware definitions.
             </p>
             <Link
-              to="/docs/guide/routes"
+              to="/docs/guides/routes"
               className={styles.featureShowcaseLink}
             >
               Read More
@@ -153,7 +153,7 @@ function Features() {
           <div className={styles.heroContent}>
             <h3>Isomorphism</h3>
             <p>Data automatic dehydration water injection.</p>
-            <Link to="/docs/guide/Data%20Fetching" className={styles.heroLink}>
+            <Link to="/docs/guides/Data%20Fetching" className={styles.heroLink}>
               Read More
             </Link>
           </div>
