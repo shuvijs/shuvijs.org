@@ -77,44 +77,29 @@ const sidebars = {
     // In order to generate the API directory, we must manually add the sidebar below.
     {
       type: "category",
-      label: "Global API",
+      label: "Runtime API",
       collapsed: false,
       collapsible: false,
       items: [
         {
           type: "doc",
-          id: "api/application",
+          id: "api/runtime/general",
           customProps: {
-            headers: getTocFromId("api/application"),
+            headers: getTocFromId("api/runtime/general"),
           },
         },
         {
           type: "doc",
-          id: "api/general",
+          id: "api/runtime/components",
           customProps: {
-            headers: getTocFromId("api/general"),
-          },
-        },
-      ],
-    },
-    {
-      type: "category",
-      label: "Composition API",
-      collapsed: false,
-      collapsible: false,
-      items: [
-        {
-          type: "doc",
-          id: "api/setup",
-          customProps: {
-            headers: getTocFromId("api/setup"),
+            headers: getTocFromId("api/runtime/components"),
           },
         },
         {
           type: "doc",
-          id: "api/lifecycle-hook",
+          id: "api/runtime/hooks",
           customProps: {
-            headers: getTocFromId("api/lifecycle-hook"),
+            headers: getTocFromId("api/runtime/hooks"),
           },
         },
       ],
