@@ -78,6 +78,12 @@ const config = {
           },
           {
             type: 'doc',
+            docId: 'reference/index',
+            position: 'right',
+            label: 'Reference',
+          },
+          {
+            type: 'doc',
             docId: 'api/index',
             position: 'right',
             label: 'API',
