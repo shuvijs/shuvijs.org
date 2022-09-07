@@ -28,7 +28,7 @@ function error({ errorCode, errorDesc }) {
 }
 ```
 
-> `errorCode, errorDesc` type is [here](../../reference/runtime/interfaces/IPageError.md)
+> `errorCode, errorDesc` type is [here](../../old-reference/runtime/interfaces/IPageError.md)
 
 ## Custom Error Page
 

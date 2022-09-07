@@ -13,11 +13,11 @@ Shuvi.js supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safar
 
 We transparently inject polyfills required for IE11 compatibility. In addition, we also inject widely used polyfills, including:
 
-- [**Promise**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise)
+- [**Promise**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Promise)
 - [**fetch**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [**Object.assign**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign).
-- [**Symbol**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Symbol).
-- [**Spread syntax (...)**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Spread_syntax).
+- [**Object.assign**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Object/assign).
+- [**Symbol**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Symbol).
+- [**Spread syntax (...)**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Operators/Spread_syntax).
 
 ### client-Side Polyfills
 
@@ -48,12 +48,12 @@ In addition to [ES6 features](https://github.com/lukehoban/es6features), also su
 
 ## Typescript Support
 
-shuvi has built-in [TypeScript support](../reference/runtime/overview.md). shuvi provide types both runtime and plugins.
+shuvi has built-in [TypeScript support](../old-reference/runtime/overview.md). shuvi provide types both runtime and plugins.
    
 ## CSS Support
 
 shuvi allows you to import CSS files from a JavaScript file.
-This is possible because shuvi extends the concept of [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) beyond JavaScript.
+This is possible because shuvi extends the concept of [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Statements/import) beyond JavaScript.
 
 ### Adding a Global Stylesheet
 
@@ -72,7 +72,7 @@ body {
 ```
 
 Create a [`pages/src.js` file](./custom-behaviors/custom-app-context.md) if not already present.
-Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import) the `styles.css` file.
+Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Statements/import) the `styles.css` file.
 
 ```jsx
 import '../styles.css'
@@ -287,7 +287,7 @@ export function Hello() {
 }
 ```
 
-To dynamically import the `Hello` component, you can return it from the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) returned by [`import()`](https://github.com/tc39/proposal-dynamic-import#example), like so:
+To dynamically import the `Hello` component, you can return it from the [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Promise) returned by [`import()`](https://github.com/tc39/proposal-dynamic-import#example), like so:
 
 ```jsx
 import { dynamic } from "@shuvi/runtime";
@@ -376,7 +376,7 @@ export default () => (
 
 ## http-proxy
 
-Quick proxy requests by [shuvi.config](../reference/config.md#proxy)
+Quick proxy requests by [shuvi.config](../old-reference/config.md#proxy)
 
 ## Serving Static Files
 

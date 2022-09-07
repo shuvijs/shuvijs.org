@@ -283,7 +283,7 @@ const apiHandler: RuntimeServer.IApiRequestHandler = function handler(req, res) 
 export default apiHandler
 ```
 
-> Details of `RuntimeServer.IApiRequestHandler` types is [here](../reference/runtime/modules/RuntimeServer.md#iapirequesthandler)
+> Details of `RuntimeServer.IApiRequestHandler` types is [here](../old-reference/runtime/modules/RuntimeServer.md#iapirequesthandler)
 
 To fetch API endpoints, take a look into any of the examples at the start of this section.
 
@@ -379,7 +379,7 @@ export const middleware:RuntimeServer.IRequestHandlerWithNext = function (req, r
   return next();
 }
 ```
-> Details of `RuntimeServer.IRequestHandlerWithNext` types is [here](../reference/runtime/modules/RuntimeServer.md#irequesthandlerwithnext)
+> Details of `RuntimeServer.IRequestHandlerWithNext` types is [here](../old-reference/runtime/modules/RuntimeServer.md#irequesthandlerwithnext)
 
 #### Execution Order
 

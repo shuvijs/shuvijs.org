@@ -27,33 +27,28 @@ We will learn the following:
 
 ### Create a project
 
-At the first we need to create a directory and init project.
+Initialize a new Shuvi project. 
 
 ```shell
-mkdir blog
-cd blog
-npm init -y
-npm install shuvi@next -D
+npm init shuvi@latest
 ```
 
-Modify the script field in package.json to:
+We'll call it "blog-tutorial" but you can call it something else if you'd like.
 
+```shell
+✔ What is your project named? blog-tutorial
 ```
-"scripts": {
-    "dev": "shuvi dev"
-}
+
+Let's start the dev server:
+
+```shell
+npm run dev
 ```
 
 ### Create a route
 
-Create the src/routes directory.
-
 > notice: In the convention routing specification,
 > all our routing endpoint files are placed in the src/routes directory.
-
-```shell
-mkdir -p src/routes
-```
 
 We want to create a component handle to the `/posts` path.
 
@@ -362,15 +357,10 @@ export const loader = () => {
 
 ### Deploy
 
-Modify the script field in package.json to:
-
-```
-"scripts": {
-    "dev": "shuvi dev",
-    "serve": "shuvi serve"
-}
+```shell
+npm build
 ```
 
 ```shell
-npm run serve
+npm serve
 ```

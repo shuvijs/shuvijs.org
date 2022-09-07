@@ -116,7 +116,7 @@ export const loader: Loader = async ({ redirect }) => {
 
 Application context object, which is accessiable during the entire lifecycle of application
 
-- type [AppContext](../reference/plugin/runtimePlugin-api#getappcontext)
+- type [AppContext](../old-reference/plugin/runtimePlugin-api#getappcontext)
   
 
 ### `req`
