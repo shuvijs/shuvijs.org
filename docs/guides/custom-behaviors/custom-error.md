@@ -1,6 +1,7 @@
 ---
-sidebar_position: 2
-id: Custom Error
+sidebar_position: 3
+id: custom-error
+title: Custom Error
 ---
 
 If an error occurred, shuvi render error page. In [SSR mode], response.statusCode will be set when server render HTML.

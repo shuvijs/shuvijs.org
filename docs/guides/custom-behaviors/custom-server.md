@@ -1,25 +1,19 @@
 ---
-sidebar_position: 5
-id: Custom server
+sidebar_position: 4
+id: custom-server
+title: Custom Server
 ---
 
 ## How to Custom Document
 
 To create a custom error page you can create a `src/server.js` file. `export` with `getPageData`, `modifyHtml`,`renderToHTML` and `middlewares`, all that methods **_only work in server side_**.
 
-- `middlewares` allow add custom middlewares to server for handler request and response.
 - `getPageData` add extra data to application.
 - `modifyHtml` modify document props.
 - `renderToHTML` last chance to modify rendered html before it be sended to browser.
 
 ```javascript
 // src/server.js
-export const middlewares = [
-  { path: "/health-check:other(.*)", handler: setCookie },
-  { path: "/users/:id", handler: user },
-  { path: "/profile/:id/setting:other(.*)", handler: setting },
-];
-
 export const getPageData = () => {
   return {
     foo: "bar",

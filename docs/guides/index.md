@@ -71,7 +71,7 @@ body {
 }
 ```
 
-Create a [`pages/src.js` file](./custom-behaviors/custom-app-context.md) if not already present.
+Create a [`pages/src.js` file](./custom-behaviors/custom-app.md) if not already present.
 Then, [`import`](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Statements/import) the `styles.css` file.
 
 ```jsx
@@ -80,7 +80,7 @@ export default (App) => <App />;
 ```
 
 These styles (`styles.css`) will apply to all pages and components in your application.
-Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`src/app.js`](./custom-behaviors/custom-app-context.md)**.
+Due to the global nature of stylesheets, and to avoid conflicts, you may **only import them inside [`src/app.js`](./custom-behaviors/custom-app.md)**.
 
 In development, expressing stylesheets this way allows your styles to be hot reloaded as you edit them—meaning you can keep application state.
 

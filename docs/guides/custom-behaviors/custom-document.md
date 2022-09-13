@@ -1,6 +1,7 @@
 ---
-sidebar_position: 3
-id: Custom document
+sidebar_position: 2
+id: custom-document
+title: Custom Document
 ---
 
 shuvi generate HTML by [ejs engine](https://ejs.co/). It works both `spa` and `ssr` mode.

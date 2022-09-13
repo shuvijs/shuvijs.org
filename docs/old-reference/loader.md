@@ -25,12 +25,6 @@ type Loader<T extends {} = {}> = (
 
 loaderContenxt is an object containing several useful properties and methods.
 
-### `isServer`
-
-Indicating if current loader is being executed on server side
-
-- type `boolean`
-
 ### `pathname`
 
 Current url path

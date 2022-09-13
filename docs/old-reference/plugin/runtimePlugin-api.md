@@ -111,7 +111,7 @@ export default createRuntimePlugin({
 ```
 
 :::info Differences between the two hooks
-Please refer to [Guides/Custom App](../../guides/custom-behaviors/custom-app-context.md)
+Please refer to [Guides/Custom App](../../guides/custom-behaviors/custom-app.md)
 :::
 
 ### `dispose`

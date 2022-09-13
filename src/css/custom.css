@@ -15,7 +15,6 @@
   --ifm-color-primary-lightest: #3cad6e;
   --ifm-bg-primary: #303846;
   --ifm-code-font-size: 95%;
-
   --ifm-container-width-xl: 1400px;
 }
 
@@ -28,6 +27,19 @@
   --ifm-color-primary-light: #29d5b0;
   --ifm-color-primary-lighter: #32d8b4;
   --ifm-color-primary-lightest: #4fddbf;
+}
+
+.markdown h1,
+.markdown h1:first-child {
+  --ifm-h1-font-size: 2.4rem;
+}
+
+.markdown > h2 {
+  --ifm-h2-font-size: 1.5rem;
+}
+
+.markdown > h3 {
+  --ifm-h3-font-size: 1rem;
 }
 
 .docusaurus-highlight-code-line {

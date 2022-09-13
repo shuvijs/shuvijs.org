@@ -1,6 +1,7 @@
 ---
 sidebar_position: 1
-id: Custom App Context
+id: custom-app
+title: Custom App
 ---
 
 Create a `src/app.js` file to intervene shuvi app.

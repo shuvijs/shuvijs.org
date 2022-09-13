@@ -1,5 +1,6 @@
 {
-  "label": "Custom behaviors",
+  "label": "Custom Behaviors",
   "position": 3,
-  "collapsed": false
+  "collapsed": false,
+  "collapsible": false
 }
