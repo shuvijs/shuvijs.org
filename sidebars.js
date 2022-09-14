@@ -28,7 +28,7 @@ const getTocFromId = (id) => {
 
       let anchor = value
         .toLowerCase()
-        .replace(" ", "-")
+        .replace(/[ ]/g, "-")
         .replace(/[^a-zA-Z0-9_-]/g, "");
       if (cacheAnchor.has(anchor)) {
         cacheAnchor.set(anchor, cacheAnchor.get(anchor) + 1);
@@ -58,9 +58,12 @@ const sidebars = {
       collapsible: false,
     },
     {
-      type: "link",
+      // type: "link",
+      // label: "Guides",
+      // href: "/docs/guides",
+      type: "doc",
       label: "Guides",
-      href: "/docs/guides",
+      id: "guides/index",
     },
     // {
     //   "Getting Stared": ["tutorials", "playground"]
@@ -107,6 +110,13 @@ const sidebars = {
           id: "reference/configuration/general",
           customProps: {
             headers: getTocFromId("reference/configuration/general"),
+          },
+        },
+        {
+          type: "doc",
+          id: "reference/configuration/compiler",
+          customProps: {
+            headers: getTocFromId("reference/configuration/compiler"),
           },
         },
         {

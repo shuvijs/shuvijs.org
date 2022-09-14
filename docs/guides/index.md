@@ -3,6 +3,7 @@ id: index
 title: Overview
 slug: /guides
 sidebar_position: 1
+description: Guides take you through the steps required to solve a specific problem. You'll learn how to solve most problems by a step-by-step guide.
 ---
 
 ## Supported Browsers and Features

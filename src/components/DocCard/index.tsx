@@ -4,18 +4,18 @@ import clsx from "clsx";
 import Link from "@docusaurus/Link";
 import style from "./style.module.css";
 
-interface Props {
+export interface Props {
   title: string;
   url: string;
   description: JSX.Element;
 }
 
-export function Card({ title, url, description }: Props) {
+export function DocCard({ title, url, description }: Props) {
   return (
     <div className={clsx(style.card)}>
       <Link to={url}>
-        <h3>{title}</h3>
-        <p>{description}</p>
+        <h2 className={clsx(style.cardTitle)}>{title}</h2>
+        <p className={clsx(style.cardDescription)}>{description}</p>
       </Link>
     </div>
   );

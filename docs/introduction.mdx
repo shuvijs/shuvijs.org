@@ -21,59 +21,39 @@ Vue.js support is still in the plan.
 
 :::
 
-
 ## Getting Started
 
-Create a new directory and init `package.json`
-
 ```sh
-npx create-remix@latest
+npm init shuvi@latest
 ```
 
-Install shuvi
+import { SimpleDocCardList } from "@site/src/components/SimpleDocCardList";
 
-```sh
-npm i shuvi
-```
-
-Create `src/pages` directory, then generate a page with `hello, world`:
-
-```sh
-mkdir -p src/pages &&
-echo "export default () => <div>hello, world</div>" > ./src/pages/index.js
-```
-
-Open `package.json` and add the following `scripts`:
-
-```json
-{
-  "scripts": {
-    "dev": "shuvi dev",
-    "build": "shuvi build",
-    "serve": "shuvi serve"
-  }
-}
-```
-
-- `shuvi dev` - which starts shuvi in development mode
-- `shuvi build` - which builds the application for production usage
-- `shuvi serve` - which starts a shuvi production server
-
-```mdx-code-block
-import { Card } from '@site/src/components/Card';
-
-<div className="row">
-  <div className="col col--6">
-    <Card title="Quick Start" url="/docs/tutorials" description="Spend your first few minutes with Remix here and let us introduce some of the core features as quickly as possible. After this you can go explore the docs or dive deeper with the other tutorials. We'll build a little markdown blog with data loading, actions, form validation, redirects, and more." />
-  </div>
-  <div className="col col--6">
-    <Card title="Guides" url="/docs/guides" description="Guides take you through the steps required to solve a specific problem. You'll learn how to solve most problems by a step-by-step guide." />
-  </div>
-</div>
-
-<div className="row margin-top--md">
-  <div className="col col--6">
-    <Card title="API" url="/docs/api" description="This is probably the doc page you'll visit the most. It's got all of the API that you'll use day-to-day in your app." />
-  </div>
-</div>
-```
+<SimpleDocCardList
+  items={[
+    {
+      title: "📄️ Quick Start",
+      url: "/docs/tutorials",
+      description:
+        "Spend your first few minutes with Shuvi.js here and let us introduce some of the core features as quickly as possible. After this you can go explore the docs or dive deeper with the other tutorials. We'll build a little markdown blog with data loading, actions, form validation, redirects, and more.",
+    },
+    {
+      title: "📄️ Guides",
+      url: "/docs/guides",
+      description:
+        "Guides take you through the steps required to solve a specific problem. You'll learn how to solve most problems by a step-by-step guide.",
+    },
+    {
+      title: "📄️ Reference",
+      url: "/docs/reference",
+      description:
+        "Shuvi.js has a handful of conventions to make web application development a breeze. You'll spend some time in this document when you're first learning Shuvi.js, but probably won't need it much after you get your feet wet.",
+    },
+    {
+      title: "📄️ API",
+      url: "/docs/api",
+      description:
+        "This is probably the doc page you'll visit the most. It's got all of the API that you'll use day-to-day in your app.",
+    },
+  ]}
+/>

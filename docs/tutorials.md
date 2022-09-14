@@ -5,7 +5,7 @@ title: Tutorials
 
 ## Introduction
 
-shuvi is a front-end application development solution that integrates modern tool chains, focuses on improving development experience and efficiency.
+**Shuvi.js** is a front-end application development solution that integrates modern tool chains, focuses on improving development experience and efficiency.
 
 ## Create your first app
 
