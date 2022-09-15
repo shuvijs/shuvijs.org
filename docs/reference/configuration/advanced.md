@@ -33,12 +33,12 @@ export default {
 };
 ```
 
-## Parcel CSS
+## Lightning CSS
 
 ```ts
 export default {
   experimental: {
-    parcelCss: true,
+    lightningCss: true,
   },
 };
 ```
