@@ -1,7 +1,7 @@
 ---
-sidebar_position: 2
-id: custom-document
-title: Custom Document
+sidebar_position: 4
+id: custom-document-template
+title: Custom Document Template
 ---
 
 shuvi generate HTML by [ejs engine](https://ejs.co/). It works both `spa` and `ssr` mode.
@@ -26,7 +26,7 @@ handle `documentProps` in function `onDocumentProps` and `modifyHtml`.
 
 > Detail type of `onDocumentProps` is [here](../../old-reference/runtime/interfaces/RuntimeServer.IDocumentModule.md#ondocumentprops)
 
-## How to Custom Document
+## How to Custom Document Template
 
 There is way to modify default ejs template, add `src/document.ejs`:
 
@@ -83,7 +83,3 @@ render results:
 </body>
 </html>
 ```
-
-## Why Need To Custom Document
-
-- import some external resources, such as CDN

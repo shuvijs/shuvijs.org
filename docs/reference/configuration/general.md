@@ -3,16 +3,16 @@ id: general
 title: General
 ---
 
-For custom configuration of Shuvi.js, you can create a `shuvi.config.js` or `shuvi.config.ts` file in the root of your project directory (next to `package.json`).
+For custom configuration of Shuvi.js, you can create a `shuvi.config.ts` or `shuvi.config.ts` file in the root of your project directory (next to `package.json`).
 
-`shuvi.config.js` is a regular Node.js module, not a JSON file. It gets used by the Shuvi.js server and build phases, and it's not included in the browser build.
+`shuvi.config.ts` is a regular Node.js module, not a JSON file. It gets used by the Shuvi.js server and build phases, and it's not included in the browser build.
 
 ## Environment Variables
 
 Add environment variables to the JavaScript bundle
 
 ```ts
-// file: shuvi.config.js
+// file: shuvi.config.ts
 export default {
   env: {
     customKey: "my-value",
