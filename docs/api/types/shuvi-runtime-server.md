@@ -74,8 +74,12 @@ interface IHtmlDocument {
 
 function modifyHtml(
   document: IHtmlDocument,
-  appContext: AppContext
+  context: {
+    req: http.IncomingMessage,
+    appContext: AppContext,
+  }
 ): void | Promise<void>;
 ```
 
-- see [AppContext](./shuvi-runtime.md#appcontext)
+- type [http.IncomingMessage](https://nodejs.org/api/http.html#http_class_http_incomingmessage)
+- type [AppContext](./shuvi-runtime.md#appcontext)

@@ -11,7 +11,7 @@ type Loader<T extends {} = {}> = (
 ) => Promise<T | Response | void | undefined> | T | Response | void | undefined;
 ```
 
-- see [RouteLoaderContext](#routeloadercontext)
+- type [RouteLoaderContext](#routeloadercontext)
 
 ## RouteLoaderContext
 
@@ -121,7 +121,7 @@ export const loader: Loader = async ({ redirect }) => {
 
 Application context object, which is accessiable during the entire lifecycle of application
 
-- see [AppContext](#appcontext)
+- type [AppContext](#appcontext)
 
 ### `ctx.req`
 

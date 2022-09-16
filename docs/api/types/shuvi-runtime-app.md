@@ -15,7 +15,7 @@ function init(): void | Promise<void>;
 function appContext(appContext: AppContext): void | Promise<void>;
 ```
 
-- see [AppContext](./shuvi-runtime.md#appcontext)
+- type [AppContext](./shuvi-runtime.md#appcontext)
 
 ## AppComponentFunction
 
@@ -23,7 +23,7 @@ function appContext(appContext: AppContext): void | Promise<void>;
 function appComponent<T>(App: T, appContext: AppContext): Promise<T>;
 ```
 
-- see [AppContext](./shuvi-runtime.md#appcontext)
+- type [AppContext](./shuvi-runtime.md#appcontext)
 
 ## DisposeFunction
 
