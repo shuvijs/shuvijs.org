@@ -84,6 +84,10 @@
     no-repeat;
 }
 
+.footer--dark {
+  --ifm-footer-background-color: #2b3137;
+}
+
 /* api page */
 /* hide breadcrumbs, footer */
 .docs-doc-id-api\/index footer,

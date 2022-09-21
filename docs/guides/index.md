@@ -8,7 +8,7 @@ description: Guides take you through the steps required to solve a specific prob
 
 ## Supported Browsers and Features
 
-Shuvi.js supports **IE11 and all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
+Shuvi.js supports **all modern browsers** (Edge, Firefox, Chrome, Safari, Opera, et al) with no required configuration.
 
 ## Polyfills
 
