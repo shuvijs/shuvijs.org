@@ -38,7 +38,6 @@ src
     │   ├── preference
     │   │   └── page.jsx ───────── /setting/preference
     │   ├── others
-    │   │   └── page.jsx ───────── /setting/others
     │   │   └── $
     │   │       └── page.jsx ───── /setting/others/*
     │   └── layout.jsx
