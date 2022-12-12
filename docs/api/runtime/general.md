@@ -83,7 +83,7 @@ function dynamic<Props = {}>(
 ### Example
 
 ```tsx
-import dynamic from "@shuvi/runtime";
+import { dynamic } from "@shuvi/runtime";
 import { Suspense } from "react";
 
 const DynamicHeader = dynamic(() => import("../components/header"), {
