@@ -5,7 +5,7 @@ id: Routes
 
 Shuvi provides a file system-based convention routing rule.
 Read the agreed files from **src/routes** in the project root directory,
-such as page.js, **`layout.js`**, **`api.js`**, **`middleware.js`**.
+such as page.js, **`layout.js`** and **`api.js`**.
 Which produces the corresponding **`React Component`** routing hierarchy.
 
 ## Generate routing paths
