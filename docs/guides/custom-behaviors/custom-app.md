@@ -4,29 +4,33 @@ id: custom-app
 title: Custom App
 ---
 
-Create a `src/app.js` file to intervene shuvi app.
+Create a `src/app.js` or `src/app.ts` file to intervene shuvi app.
 
 
-## init
+## `init`
 
 run on initialization
 
 **example:**
 
-```js
+```ts title="src/app.ts"
+import { InitFunction } from '@shuvi/runtime/app'
+
 export const init = () => {
   console.log('init');
 };
 ```
 
-## appContext
+## `appContext`
 
 Should return custom ctx data, mixin `ctx.appContext`, fired after `init`.
 
 **example**:
 
-```js
-export const appContext = ctx => {
+```ts title="src/app.ts"
+import { AppContextFunction } from '@shuvi/runtime/app'
+
+export const appContext: AppContextFunction = ctx => {
   return {
     ...ctx,
     data: 1
@@ -35,35 +39,33 @@ export const appContext = ctx => {
 ```
 
 
-## appComponent
+## `appComponent`
 
 
-'appComponent' is a function that should return a component that is the arrow at the top of the entire application.
+`appComponent` is a function that should return a component that is the arrow at the top of the entire application.
 
 **example**:
 
-```javascript
-// src/app.js
+```tsx title="src/app.ts"
+import { AppComponentFunction } from '@shuvi/runtime/app'
 
-export const appComponent = UserApp => {
-  function AppComponent(props) {
+export const appComponent: AppComponentFunction = async UserApp => {
+  function AppComponent() {
     return (
       <div>
         <div>This is AppComponent</div>
-        <UserApp {...props} />
+        <UserApp />
       </div>
     );
   }
-  if (UserApp.getInitialProps)
-    AppComponent.getInitialProps = UserApp.getInitialProps;
   return AppComponent;
 };
 ```
 
-```javascript
+```ts title="src/routes/page.js"
 // src/routes/page.js
-export default function Index(props) {
-  return <div>Index Page: {props.index}</div>;
+export default function Index() {
+  return <div>Index Page</div>;
 }
 
 ```
@@ -74,36 +76,27 @@ The **notes** shown layers of HOC in result HTML.
 // render result
 <div id="__APP"> // container to render
   // highlight-next-line
-  // getAppComponent HOC
+  // appComponent HOC
   <div>
     <div>This is AppComponent</div>
-    <div>
-      // highlight-next-line
-      // user custom app
-      <div id="pathname">pathname: /</div>
-      // highlight-next-line
-      // getRootAppComponent HOC
-      <div>
-        <div>This is getRootAppComponent</div>
-        // highlight-next-line
-        // index page
-        <div>Index Page: index props</div>
-      </div>
-    </div>
-    </div>
+    // highlight-next-line
+    // index page
+    <div>Index Page</div>
   </div>
 </div>
 ```
 
 
-## dispose
+## `dispose`
 
 Will only run on the server side, when the page request is completed.
 
 **example:**
 
-```js
-export const dispose = () => {
+```ts title="src/app.ts"
+import { DisposeFunction } from '@shuvi/runtime/app';
+
+export const dispose: DisposeFunction = () => {
   console.log('dispose');
 };
 ```
