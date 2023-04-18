@@ -62,11 +62,18 @@ The `loader` is isomorphic and it will run before every server-side or client-si
 
 By default, when using server-side rendering, all loaders will run at server-side and the result of loaders will be inserted to the HTML document, so that during hydrating, the result of `loader` can be reused and `loader` will not run at client side.
 
-On navigations in the browser, `loader` will run at client side before route navigation complete.
+On navigation in the browser, `loader` will run at client side before route navigation complete.
 
 Shuvi allows nested routes. All `loader`s of matched route modules will run in parallel.
 
 When a route navigation is triggered, only the loader of the newly rendered route component, the loader of the route component that remains rendered but the params have changed, and the loader of the last matched route component will be executed.
+
+:::caution
+Since loaders may be executed on the server or client, please make sure they are isomorphic.
+
+During hot module reloading, all loaders will be re-executed on the client side.
+The loaderContext on the client side does not contain the `req` object. If the loader contains codes that are not compatible with the client side, the application will throw an error.
+:::
 
 ## Return Type of Loader
 
