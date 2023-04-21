@@ -12,13 +12,16 @@ Shuvi.js supports **all modern browsers** (Edge, Firefox, Chrome, Safari, Opera,
 
 ## Polyfills
 
-We transparently inject polyfills required for IE11 compatibility. In addition, we also inject widely used polyfills, including:
+Shuvi.js inject [widely used polyfills](https://github.com/shuvijs/shuvi/blob/main/packages/platform-web/src/polyfills/index.js), including:
 
 - [**Promise**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Promise)
-- [**fetch**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-- [**Object.assign**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Object/assign).
-- [**Symbol**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Symbol).
-- [**Spread syntax (...)**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Operators/Spread_syntax).
+- [**fetch()**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch` and `unfetch`.
+- [**URL**](https://developer.mozilla.org/en-US/docs/Web/API/URL) — Replacing: the [`url` package (Node.js API)](https://nodejs.org/api/url.html).
+- [**Object.assign()**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — Replacing: `object-assign`, `object.assign`, and `core-js/object/assign`.
+
+If any of your dependencies includes these polyfills, they’ll be eliminated automatically from the production build to avoid duplication.
+
+In addition, to reduce bundle size, Shuvi.js will only load these polyfills for browsers that require them. The majority of the web traffic globally will not download these polyfills.
 
 ### client-Side Polyfills
 
