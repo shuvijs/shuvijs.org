@@ -14,6 +14,7 @@ Shuvi.js supports **all modern browsers** (Edge, Firefox, Chrome, Safari, Opera,
 
 Shuvi.js inject [widely used polyfills](https://github.com/shuvijs/shuvi/blob/main/packages/platform-web/src/polyfills/index.js), including:
 
+- [**Promise**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/old-reference/Global_Objects/Promise)
 - [**fetch()**](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) — Replacing: `whatwg-fetch` and `unfetch`.
 - [**URL**](https://developer.mozilla.org/en-US/docs/Web/API/URL) — Replacing: the [`url` package (Node.js API)](https://nodejs.org/api/url.html).
 - [**Object.assign()**](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/assign) — Replacing: `object-assign`, `object.assign`, and `core-js/object/assign`.
