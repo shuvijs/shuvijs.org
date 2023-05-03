@@ -72,7 +72,9 @@ Shuvi.js provides an ESLint plugin, [`eslint-plugin-shuvi`](https://www.npmjs.co
 | :-: | --------------------------------------------------------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- |
 | ✔️  | [@shuvi/shuvi/no-head-element](/docs/guides/rules/no-head-element.md)                                                             | Prevent usage of `<head>` element.                                                                 |
 | ✔️  | [@shuvi/shuvi/no-html-link-for-pages](/docs/guides/rules/no-html-link-for-pages.md)                                               | Prevent usage of `<a>` elements to navigate to internal Shuvi.js pages.                             |
-| ✔️  | @shuvi/shuvi/no-typos                                                                                                         | Prevent common typos in [Shuvi.js's data fetching functions](/docs/guides/data-fetching.md) |
+| ✔️  | @shuvi/shuvi/no-typos-page                                                                                                   | Prevent common typos in [Shuvi.js's data fetching functions](/docs/guides/data-fetching.md) |
+| ✔️  | @shuvi/shuvi/no-typos-custom-app                                                                                             | Prevent common typos in [Custom App](/docs/guides/custom-behaviors/custom-app.md) |
+| ✔️  | @shuvi/shuvi/no-typos-custom-server                                                                                          | Prevent common typos in [Custom Server](/docs/guides/custom-behaviors/custom-server.md) |
 
 If you already have ESLint configured in your application, we recommend extending from this plugin directly instead of including `eslint-config-shuvi` unless a few conditions are met. Refer to the [Recommended Plugin Ruleset](#recommended-plugin-ruleset) to learn more.
 
