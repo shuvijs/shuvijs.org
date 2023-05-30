@@ -56,6 +56,37 @@ export const loader: Loader<LoaderData> = async ({
 export default RouteComponent;
 ```
 
+## Import `loader` From Other Modules
+
+:::danger
+If you need to import a `loader` from another module, please ensure that the module is **relatively independent**.
+
+**Otherwise, it will affect the performance of the application.**
+:::
+
+Examples of **correct** code:
+
+```javascript
+// anyModule.js
+// only export the loader module.
+export const loader = function () {
+  return "someData";
+};
+```
+
+```javascript
+// page.js or layout.js
+import { loader } from "./anyModule"; // import only the loader module.
+```
+
+Examples of **incorrect** code:
+
+```javascript
+// page.js or layout.js
+// importing additional default and otherModule is prohibited
+import { default, loader, otherModule } from './anyModule'
+```
+
 ## Timing of Executing Loader
 
 The `loader` is isomorphic and it will run before every server-side or client-side initial rendering and every route navigation to make sure the returned data is ready when component renders.
