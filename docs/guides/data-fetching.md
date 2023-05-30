@@ -100,7 +100,11 @@ export const otherModule = "otherModule";
 // page.js or layout.js
 // Do not re-export default and loader from the same file.
 // highlight-next-line
+// ❌ Wrong -  Don't re-export default and loader from the same file.
 export { default, loader } from "./anyModule";
+
+// ✅ OK - It is safe to export a single loader function.
+export { loader } from "./anyModule";
 ```
 
 ## Timing of Executing Loader
