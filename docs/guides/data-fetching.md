@@ -93,6 +93,7 @@ export default function Page() {
 }
 // Do not define and export modules that are unrelated to the loader.
 // highlight-next-line
+// ❌ Wrong - Don't define and export modules that are unrelated to the loader.
 export const otherModule = "otherModule"; 
 ```
 
