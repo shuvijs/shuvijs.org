@@ -88,6 +88,7 @@ export const loader = function () {
 };
   // Do not define and export modules related to views.
 // highlight-next-line
+// ❌ Wrong - Don't define and export modules related to views.
 export default function Page() {
   return <div>page content</div>;
 }
