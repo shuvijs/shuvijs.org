@@ -83,6 +83,7 @@ Examples of **incorrect** code:
 
 ```javascript
 // anyModule.js
+// ✅ OK - It is safe to define a single loader function in the anyModule.js.
 export const loader = function () {
   return "someData";
 };
