@@ -76,15 +76,38 @@ export const loader = function () {
 
 ```javascript
 // page.js or layout.js
-import { loader } from "./anyModule"; // import only the loader module.
+export { loader } from "./anyModule"; // Only re-export the loader.
 ```
 
 Examples of **incorrect** code:
 
 ```javascript
+// anyModule.js
+// ✅ OK - It is safe to define a single loader function in the anyModule.js.
+export const loader = function () {
+  return "someData";
+};
+  // Do not define and export modules related to views.
+// highlight-next-line
+// ❌ Wrong - Don't define and export modules related to views.
+export default function Page() {
+  return <div>page content</div>;
+}
+// Do not define and export modules that are unrelated to the loader.
+// highlight-next-line
+// ❌ Wrong - Don't define and export modules that are unrelated to the loader.
+export const otherModule = "otherModule"; 
+```
+
+```javascript
 // page.js or layout.js
-// importing additional default and otherModule is prohibited
-import { default, loader, otherModule } from './anyModule'
+// Do not re-export default and loader from the same file.
+// highlight-next-line
+// ❌ Wrong -  Don't re-export default and loader from the same file.
+export { default, loader } from "./anyModule";
+
+// ✅ OK - It is safe to export a single loader function.
+export { loader } from "./anyModule";
 ```
 
 ## Timing of Executing Loader
