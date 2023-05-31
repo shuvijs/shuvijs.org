@@ -87,23 +87,20 @@ Examples of **incorrect** code:
 export const loader = function () {
   return "someData";
 };
-  // Do not define and export modules related to views.
-// highlight-next-line
 // ❌ Wrong - Don't define and export modules related to views.
+// highlight-next-line
 export default function Page() {
   return <div>page content</div>;
 }
-// Do not define and export modules that are unrelated to the loader.
-// highlight-next-line
 // ❌ Wrong - Don't define and export modules that are unrelated to the loader.
+// highlight-next-line
 export const otherModule = "otherModule"; 
 ```
 
 ```javascript
 // page.js or layout.js
-// Do not re-export default and loader from the same file.
-// highlight-next-line
 // ❌ Wrong -  Don't re-export default and loader from the same file.
+// highlight-next-line
 export { default, loader } from "./anyModule";
 
 // ✅ OK - It is safe to export a single loader function.
